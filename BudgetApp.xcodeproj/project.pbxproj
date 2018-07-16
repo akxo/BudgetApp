@@ -12,6 +12,10 @@
 		B3131FFD20FCC4F30073482A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3131FFB20FCC4F30073482A /* Main.storyboard */; };
 		B3131FFF20FCC4F30073482A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3131FFE20FCC4F30073482A /* Assets.xcassets */; };
 		B313200220FCC4F30073482A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B313200020FCC4F30073482A /* LaunchScreen.storyboard */; };
+		B384812320FD65B700DB97B7 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B384811F20FD65B700DB97B7 /* Budget.swift */; };
+		B384812420FD65B700DB97B7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B384812020FD65B700DB97B7 /* Category.swift */; };
+		B384812520FD65B700DB97B7 /* ReoccurringTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B384812120FD65B700DB97B7 /* ReoccurringTransaction.swift */; };
+		B384812620FD65B700DB97B7 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B384812220FD65B700DB97B7 /* Transaction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		B3131FFE20FCC4F30073482A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B313200120FCC4F30073482A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B313200320FCC4F30073482A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B384811F20FD65B700DB97B7 /* Budget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
+		B384812020FD65B700DB97B7 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		B384812120FD65B700DB97B7 /* ReoccurringTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReoccurringTransaction.swift; sourceTree = "<group>"; };
+		B384812220FD65B700DB97B7 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +100,10 @@
 		B313200C20FCC52A0073482A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B384811F20FD65B700DB97B7 /* Budget.swift */,
+				B384812020FD65B700DB97B7 /* Category.swift */,
+				B384812120FD65B700DB97B7 /* ReoccurringTransaction.swift */,
+				B384812220FD65B700DB97B7 /* Transaction.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -169,6 +181,10 @@
 			files = (
 				B3131FFA20FCC4F30073482A /* ViewController.swift in Sources */,
 				B3131FF820FCC4F30073482A /* AppDelegate.swift in Sources */,
+				B384812620FD65B700DB97B7 /* Transaction.swift in Sources */,
+				B384812320FD65B700DB97B7 /* Budget.swift in Sources */,
+				B384812420FD65B700DB97B7 /* Category.swift in Sources */,
+				B384812520FD65B700DB97B7 /* ReoccurringTransaction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

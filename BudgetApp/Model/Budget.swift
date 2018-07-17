@@ -8,24 +8,49 @@
 
 import Foundation
 
-public class Budget {
-    
+public class Budget: NSObject, NSCoding {
+
     // MARK: Properties
     var currentDate: Date
     var categories: [Category]
     var allTransactions: [Transaction]
     var reoccurringTransactions: [ReoccurringTransaction]
-    var recentMerchants: [String]
-    let monthlyIncome: Int
+    var recentMerchants: [(name: String, category: String)]
     
     // MARK: Initializer
-    init(monthlyIncome: Int) {
+    override init() {
         self.currentDate = Date()
         self.categories = []
         self.allTransactions = []
         self.reoccurringTransactions = []
         self.recentMerchants = []
-        self.monthlyIncome = monthlyIncome
+    }
+    
+    init(currentDate: Date, categories: [Category], allTransactions: [Transaction], reoccurringTransactions: [ReoccurringTransaction], recentMerchants: [(String, String)]) {
+        self.currentDate = currentDate
+        self.categories = categories
+        self.allTransactions = allTransactions
+        self.reoccurringTransactions = []
+        self.recentMerchants = []
+    }
+    
+    // Protocol Conformation
+    public required convenience init?(coder aDecoder: NSCoder) {
+        guard let currentDate = aDecoder.decodeObject(forKey: "currentDate") as? Date,
+            let categories = aDecoder.decodeObject(forKey: "categories") as? [Category],
+            let allTransactions = aDecoder.decodeObject(forKey: "allTransactions") as? [Transaction],
+            let reoccurringTransactions = aDecoder.decodeObject(forKey: "reoccurringTransactions") as? [ReoccurringTransaction],
+            let recentMerchants = aDecoder.decodeObject(forKey: "recentMerchants") as? [(String, String)] else {return nil}
+        
+        self.init(currentDate: currentDate, categories: categories, allTransactions: allTransactions, reoccurringTransactions: reoccurringTransactions, recentMerchants: recentMerchants)
+    }
+    
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(currentDate, forKey: "currentDate")
+        aCoder.encode(categories, forKey: "categories")
+        aCoder.encode(allTransactions, forKey: "allTransactions")
+        aCoder.encode(reoccurringTransactions, forKey: "reoccurringTransactions")
+        aCoder.encode(recentMerchants, forKey: "recentMerchants")
     }
     
     // MARK: Methods
@@ -37,6 +62,13 @@ public class Budget {
     func addTransaction(transaction: Transaction) {
         allTransactions.append(transaction)
         allTransactions.sort(by: {$0.date < $1.date})
+        addMerchant(transaction: transaction)
+    }
+    
+    func addMerchant(transaction: Transaction) {
+        var newMerchants = recentMerchants.filter({$0.name != transaction.merchant})
+        newMerchants.insert((transaction.merchant, transaction.category), at: 0)
+        recentMerchants = newMerchants
     }
     
     func addReoccurringTransaction(transaction: ReoccurringTransaction) {

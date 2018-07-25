@@ -8,28 +8,42 @@
 
 /* Begin PBXBuildFile section */
 		B3131FF820FCC4F30073482A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3131FF720FCC4F30073482A /* AppDelegate.swift */; };
-		B3131FFA20FCC4F30073482A /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3131FF920FCC4F30073482A /* RootViewController.swift */; };
+		B3131FFA20FCC4F30073482A /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3131FF920FCC4F30073482A /* OverviewViewController.swift */; };
 		B3131FFD20FCC4F30073482A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3131FFB20FCC4F30073482A /* Main.storyboard */; };
 		B3131FFF20FCC4F30073482A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3131FFE20FCC4F30073482A /* Assets.xcassets */; };
 		B313200220FCC4F30073482A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B313200020FCC4F30073482A /* LaunchScreen.storyboard */; };
+		B322F5C1210002970020564D /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B322F5BF210002970020564D /* TransactionTableViewCell.swift */; };
+		B322F5C2210002970020564D /* TransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B322F5C0210002970020564D /* TransactionTableViewCell.xib */; };
+		B363DA19210560A300CE5142 /* FrequencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B363DA18210560A300CE5142 /* FrequencyViewController.swift */; };
+		B363DA1B210560CE00CE5142 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B363DA1A210560CE00CE5142 /* CategoryViewController.swift */; };
+		B36EE4C22104F55300AF228C /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36EE4C12104F55300AF228C /* DateViewController.swift */; };
+		B370F35821093E9900A6043F /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B370F35721093E9900A6043F /* BudgetViewController.swift */; };
 		B384812320FD65B700DB97B7 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B384811F20FD65B700DB97B7 /* Budget.swift */; };
 		B384812420FD65B700DB97B7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B384812020FD65B700DB97B7 /* Category.swift */; };
-		B384812520FD65B700DB97B7 /* ReoccurringTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B384812120FD65B700DB97B7 /* ReoccurringTransaction.swift */; };
 		B384812620FD65B700DB97B7 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B384812220FD65B700DB97B7 /* Transaction.swift */; };
+		B3BE9D7D2102EFC0003CB830 /* AddTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BE9D7C2102EFC0003CB830 /* AddTransactionViewController.swift */; };
+		B3CCC5032104050A0065C792 /* MerchantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CCC5022104050A0065C792 /* MerchantViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B3131FF420FCC4F30073482A /* BudgetApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BudgetApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3131FF720FCC4F30073482A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B3131FF920FCC4F30073482A /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		B3131FF920FCC4F30073482A /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
 		B3131FFC20FCC4F30073482A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B3131FFE20FCC4F30073482A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B313200120FCC4F30073482A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B313200320FCC4F30073482A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B322F5BF210002970020564D /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TransactionTableViewCell.swift; path = BudgetApp/Controller/TransactionTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		B322F5C0210002970020564D /* TransactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TransactionTableViewCell.xib; path = BudgetApp/Controller/TransactionTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		B363DA18210560A300CE5142 /* FrequencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyViewController.swift; sourceTree = "<group>"; };
+		B363DA1A210560CE00CE5142 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		B36EE4C12104F55300AF228C /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
+		B370F35721093E9900A6043F /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		B384811F20FD65B700DB97B7 /* Budget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		B384812020FD65B700DB97B7 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		B384812120FD65B700DB97B7 /* ReoccurringTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReoccurringTransaction.swift; sourceTree = "<group>"; };
 		B384812220FD65B700DB97B7 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		B3BE9D7C2102EFC0003CB830 /* AddTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddTransactionViewController.swift; path = BudgetApp/Controller/AddTransactionViewController.swift; sourceTree = SOURCE_ROOT; };
+		B3CCC5022104050A0065C792 /* MerchantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,9 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				B3131FF720FCC4F30073482A /* AppDelegate.swift */,
-				B3131FFB20FCC4F30073482A /* Main.storyboard */,
 				B3131FFE20FCC4F30073482A /* Assets.xcassets */,
-				B313200020FCC4F30073482A /* LaunchScreen.storyboard */,
 				B313200320FCC4F30073482A /* Info.plist */,
 			);
 			path = Resources;
@@ -85,7 +97,13 @@
 		B313200A20FCC5100073482A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B3131FF920FCC4F30073482A /* RootViewController.swift */,
+				B3131FF920FCC4F30073482A /* OverviewViewController.swift */,
+				B3BE9D7C2102EFC0003CB830 /* AddTransactionViewController.swift */,
+				B3CCC5022104050A0065C792 /* MerchantViewController.swift */,
+				B36EE4C12104F55300AF228C /* DateViewController.swift */,
+				B363DA18210560A300CE5142 /* FrequencyViewController.swift */,
+				B363DA1A210560CE00CE5142 /* CategoryViewController.swift */,
+				B370F35721093E9900A6043F /* BudgetViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -93,6 +111,10 @@
 		B313200B20FCC51E0073482A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B3131FFB20FCC4F30073482A /* Main.storyboard */,
+				B322F5BF210002970020564D /* TransactionTableViewCell.swift */,
+				B322F5C0210002970020564D /* TransactionTableViewCell.xib */,
+				B313200020FCC4F30073482A /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -102,7 +124,6 @@
 			children = (
 				B384811F20FD65B700DB97B7 /* Budget.swift */,
 				B384812020FD65B700DB97B7 /* Category.swift */,
-				B384812120FD65B700DB97B7 /* ReoccurringTransaction.swift */,
 				B384812220FD65B700DB97B7 /* Transaction.swift */,
 			);
 			path = Model;
@@ -168,6 +189,7 @@
 			files = (
 				B313200220FCC4F30073482A /* LaunchScreen.storyboard in Resources */,
 				B3131FFF20FCC4F30073482A /* Assets.xcassets in Resources */,
+				B322F5C2210002970020564D /* TransactionTableViewCell.xib in Resources */,
 				B3131FFD20FCC4F30073482A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,12 +201,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3131FFA20FCC4F30073482A /* RootViewController.swift in Sources */,
+				B36EE4C22104F55300AF228C /* DateViewController.swift in Sources */,
+				B363DA19210560A300CE5142 /* FrequencyViewController.swift in Sources */,
+				B3131FFA20FCC4F30073482A /* OverviewViewController.swift in Sources */,
+				B322F5C1210002970020564D /* TransactionTableViewCell.swift in Sources */,
 				B3131FF820FCC4F30073482A /* AppDelegate.swift in Sources */,
 				B384812620FD65B700DB97B7 /* Transaction.swift in Sources */,
 				B384812320FD65B700DB97B7 /* Budget.swift in Sources */,
+				B370F35821093E9900A6043F /* BudgetViewController.swift in Sources */,
 				B384812420FD65B700DB97B7 /* Category.swift in Sources */,
-				B384812520FD65B700DB97B7 /* ReoccurringTransaction.swift in Sources */,
+				B3BE9D7D2102EFC0003CB830 /* AddTransactionViewController.swift in Sources */,
+				B363DA1B210560CE00CE5142 /* CategoryViewController.swift in Sources */,
+				B3CCC5032104050A0065C792 /* MerchantViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,7 +366,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = AkTrapp.BudgetApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -356,7 +384,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = AkTrapp.BudgetApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

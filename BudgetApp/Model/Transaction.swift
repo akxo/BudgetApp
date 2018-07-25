@@ -13,30 +13,124 @@ public class Transaction: NSObject, NSCoding {
     // MARK: Properties
     var date: Date
     var merchant: String
-    var amount: Double
-    var category: String
+    var amount: Float
+    var categoryName: String
+    var frequency: Int?
+    var isSavable: Bool {
+        return self.amount != 0.00 && self.categoryName != "" && self.merchant != ""
+    }
     
     // MARK: Initializer
-    init(date: Date, merchant: String, amount: Double, category: String) {
+    init(date: Date, merchant: String, amount: Float, categoryName: String, frequency: Int?) {
         self.date = date
         self.merchant = merchant
         self.amount = amount
-        self.category = category
+        self.categoryName = categoryName
+        self.frequency = frequency
+    }
+    
+    public override init() {
+        self.date = Date()
+        self.amount = 0.00
+        self.merchant = ""
+        self.categoryName = ""
     }
     
     // Protocol Conformation
     public required convenience init?(coder aDecoder: NSCoder) {
         guard let date = aDecoder.decodeObject(forKey: "date") as? Date,
             let merchant = aDecoder.decodeObject(forKey: "merchant") as? String,
-            let category = aDecoder.decodeObject(forKey: "category") as? String else {return nil}
-        
-        self.init(date: date, merchant: merchant, amount: aDecoder.decodeDouble(forKey: "amount"), category: category)
+            let categoryName = aDecoder.decodeObject(forKey: "categoryName") as? String else {return nil}
+        let frequency = aDecoder.decodeObject(forKey: "frequency") as? Int
+
+        self.init(date: date, merchant: merchant, amount: aDecoder.decodeFloat(forKey: "amount"), categoryName: categoryName, frequency: frequency)
     }
     
     public func encode(with aCoder: NSCoder) {
         aCoder.encode(date, forKey: "date")
         aCoder.encode(merchant, forKey: "merchant")
         aCoder.encode(amount, forKey: "amount")
-        aCoder.encode(category, forKey: "category")
+        aCoder.encode(categoryName, forKey: "categoryName")
+        aCoder.encode(frequency, forKey: "frequency")
+    }
+    
+    // MARK: Methods
+    func updateDate() {
+        var dateComponent = DateComponents()
+        if frequency == 1 {
+            dateComponent.day = 1
+        } else if frequency == 7 {
+            dateComponent.day = 7
+        } else if frequency == 14 {
+            dateComponent.day = 14
+        } else if frequency == 21 {
+            dateComponent.day = 21
+        } else if frequency == 30 {
+            dateComponent.month = 1
+        }
+        self.date = Calendar.current.date(byAdding: dateComponent, to: self.date) ?? self.date
+    }
+    
+    public func getNextDate(date: Date) -> Date {
+        var dateComponent = DateComponents()
+        if frequency == 1 {
+            dateComponent.day = 1
+        } else if frequency == 7 {
+            dateComponent.day = 7
+        } else if frequency == 14 {
+            dateComponent.day = 14
+        } else if frequency == 21 {
+            dateComponent.day = 21
+        } else if frequency == 30 {
+            dateComponent.month = 1
+        }
+        return Calendar.current.date(byAdding: dateComponent, to: self.date) ?? self.date
+    }
+    
+    public func getAllInfo() -> [String] {
+        var infoArray: [String] = []
+        let dateInfo = getDateInfo()
+        infoArray += [dateInfo.0]
+        infoArray += [dateInfo.1]
+        infoArray += [merchant]
+        infoArray += [categoryName]
+        let amount = String(self.amount).split(separator: ".")
+        let integer = "-$\(amount[0])"
+        let decimal = String(amount[1])
+        infoArray += [integer]
+        infoArray += [decimal]
+        return infoArray
+    }
+    
+    public func getDetailInfo() -> [String] {
+        var infoArray = [merchant]
+        infoArray += [date.getDescription()]
+        infoArray += [getFrequency()]
+        infoArray += [categoryName]
+        return infoArray
+    }
+    
+    private func getDateInfo() -> (String, String) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM"
+        let dateInfo = dateFormatter.string(from: self.date).split(separator: " ")
+        return (String(dateInfo[0]), String(dateInfo[1]))
+        
+    }
+    
+    public func getFrequency() -> String {
+        var str = "Never"
+        if let frequency = self.frequency {
+            if frequency == 1 {
+                str = "Daily"
+            } else if frequency == 7 {
+                str = "Weekly"
+            } else if frequency == 14 {
+                str = "Biweekly"
+            } else if frequency == 30 {
+                str = "Monthly"
+            }
+        }
+        return str
     }
 }

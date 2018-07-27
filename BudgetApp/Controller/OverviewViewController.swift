@@ -42,15 +42,13 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
         
         // Budget View
         budgetProgress.transform = budgetProgress.transform.scaledBy(x: 1, y: 8)
-        print(budgetProgress.frame.width)
-        print(budgetProgress.frame.height)
         budgetProgress.trackTintColor = #colorLiteral(red: 0.862745098, green: 0.8509803922, blue: 0.8549019608, alpha: 1)
         budgetProgress.progressTintColor = #colorLiteral(red: 0, green: 0.7675034874, blue: 0.2718033226, alpha: 0.7043225365)
         budgetProgress.progress = OverviewViewController.budget.getProgress(categoryName: "All")
         
         monthLabel.text = "\(OverviewViewController.budget.getMonths().first ?? "") Budget"
         
-        todayValueConstraint.constant = (budgetProgress.frame.width * OverviewViewController.budget.getTodayValue(categoryName: "All")) + 50.0
+        todayValueConstraint.constant = (budgetProgress.frame.width * OverviewViewController.budget.getTodayValue(categoryName: "All")) + 20.0
         
         
         
@@ -112,6 +110,8 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
             let backItem = UIBarButtonItem(title: "Overview", style: UIBarButtonItemStyle.done, target: self, action: nil)
             navigationItem.backBarButtonItem = backItem
             navigationItem.backBarButtonItem?.tintColor = UIColor.white
+            let destination = segue.destination as? BudgetViewController
+            destination?.monthNames = OverviewViewController.budget.getMonths()
         }
     }
     

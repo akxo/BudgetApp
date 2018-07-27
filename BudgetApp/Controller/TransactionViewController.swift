@@ -26,6 +26,8 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
+    @IBOutlet weak var keyboardHeightConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,6 +39,9 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
         
 //        updateAmountLabel()
         
+        if UIScreen.main.bounds.height > 800.0 {
+            keyboardHeightConstraint.constant = 325.0
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

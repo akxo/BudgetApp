@@ -12,9 +12,10 @@ class MonthlyBudgetViewController: UIViewController, UITableViewDelegate, UITabl
 
     var month: String = ""
     
-    var categories: [Category] {
-        return OverviewViewController.budget.categories
-    }
+    var categories: [Category] = [Category(name: "Food", limit: 300), Category(name: "Rent", limit: 1300), Category(name: "Gas", limit: 150),Category(name: "Food", limit: 300), Category(name: "Rent", limit: 1300),Category(name: "Food", limit: 300), Category(name: "Rent", limit: 1300),Category(name: "Food", limit: 300), Category(name: "Rent", limit: 1300)]
+//    {
+//        return OverviewViewController.budget.categories
+//    }
     @IBOutlet weak var budgetCategoriesTableView: UITableView!
     
     override func viewDidLoad() {
@@ -54,7 +55,7 @@ class MonthlyBudgetViewController: UIViewController, UITableViewDelegate, UITabl
         cell.todayValueConstraint.constant = (cell.budgetProgress.frame.width * OverviewViewController.budget.getTodayValue(categoryName: category.name)) + 16.0
         cell.categoryLabel.text = category.name
         cell.progressLabel.text = "$\(total) of $\(category.limit)"
-        cell.differenceLabel.text = "$\(abs(difference)) " + (difference <= 0 ? "Left" : "Over")
+        cell.differenceLabel.text = "$\(abs(difference)) " + (total <= 0 ? "Left" : difference <= 0 ? "Left" : "Over")
         return cell
     }
     

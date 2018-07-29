@@ -19,10 +19,10 @@ public class Budget: NSObject, NSCoding {
     var recentMerchants: [String : String]
     
     // MARK: Computed Properties
-    var totalLimit: Float {
-        var total: Float = 0.0
+    var totalLimit: Int {
+        var total: Int = 0
         for cat in categories {
-            total += Float(cat.limit)
+            total += cat.limit
         }
         return total
     }
@@ -110,13 +110,12 @@ public class Budget: NSObject, NSCoding {
     
     // MARK: Convinience Methods
     func getMonths() -> [String] {
-        var months = [currentDate.getMonthName()]
         var dateComponent = DateComponents()
+        dateComponent.month = -2
+        var months = [Calendar.current.date(byAdding: dateComponent, to: currentDate)?.getMonthName() ?? ""]
         dateComponent.month = -1
         months += [Calendar.current.date(byAdding: dateComponent, to: currentDate)?.getMonthName() ?? ""]
-        dateComponent.month = -2
-        months += [Calendar.current.date(byAdding: dateComponent, to: currentDate)?.getMonthName() ?? ""]
-        
+        months += [currentDate.getMonthName()]
         return months
     }
     
@@ -137,6 +136,7 @@ public class Budget: NSObject, NSCoding {
     func getTodayValue(categoryName: String) -> CGFloat {
         guard let range = Calendar.current.range(of: .day, in: .month, for: currentDate) else { return 0.0 }
         let numDays = Float(range.count)
+        var totalLimit: Float = 0.0
         var alreadySpent: Float = 0.0
         var yetToSpend: Float = 0.0
         if categoryName == "All" {
@@ -152,10 +152,7 @@ public class Budget: NSObject, NSCoding {
                     date = recTran.getNextDate(date: date)
                 }
             }
-            var totalLimit: Int = 0
-            for cat in categories {
-                totalLimit += cat.limit
-            }
+            totalLimit = Float(self.totalLimit)
         } else {
             for tran in allTransactions.filter({$0.categoryName == categoryName}) {
                 alreadySpent += tran.amount
@@ -169,6 +166,7 @@ public class Budget: NSObject, NSCoding {
                     date = recTran.getNextDate(date: date)
                 }
             }
+            totalLimit = Float((categories.filter({$0.name == categoryName}).first)?.limit ?? 0)
         }
         guard yetToSpend <= totalLimit else { return 1.0 }
         let remainingLimit = totalLimit - yetToSpend

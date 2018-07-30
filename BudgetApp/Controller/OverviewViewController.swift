@@ -14,6 +14,8 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
         return getBudget()
     }
     
+    var currentMonth: String = ""
+    
     var numberOfRecentTransactions = 5
     
     @IBOutlet weak var budgetView: UIView!
@@ -40,15 +42,17 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
         // clear data
 //        RootViewController.deleteBudget()
         
+        currentMonth = OverviewViewController.budget.currentDate.getMonthName()
+        
         // Budget View
         budgetProgress.transform = budgetProgress.transform.scaledBy(x: 1, y: 8)
         budgetProgress.trackTintColor = #colorLiteral(red: 0.862745098, green: 0.8509803922, blue: 0.8549019608, alpha: 1)
         budgetProgress.progressTintColor = #colorLiteral(red: 0, green: 0.7675034874, blue: 0.2718033226, alpha: 0.7043225365)
-        budgetProgress.progress = OverviewViewController.budget.getProgress(categoryName: "All")
+        budgetProgress.progress = OverviewViewController.budget.getProgress(categoryName: "All", month: currentMonth)
         
-        monthLabel.text = "\(OverviewViewController.budget.getMonths().last ?? "") Budget"
+        monthLabel.text = "\(currentMonth) Budget"
         
-        todayValueConstraint.constant = (budgetProgress.frame.width * OverviewViewController.budget.getTodayValue(categoryName: "All")) + 20.0
+        todayValueConstraint.constant = (budgetProgress.frame.width * OverviewViewController.budget.getTodayValue(categoryName: "All", month: currentMonth)) + 20.0
         
         
         

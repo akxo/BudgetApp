@@ -112,35 +112,35 @@ public class Budget: NSObject, NSCoding {
     func getMonths() -> [String] {
         var dateComponent = DateComponents()
         dateComponent.month = -2
-        var months = [Calendar.current.date(byAdding: dateComponent, to: currentDate)?.getMonthName() ?? ""]
+        var months = [Calendar.current.date(byAdding: dateComponent, to: currentDate)?.getMonthHeader() ?? ""]
         dateComponent.month = -1
-        months += [Calendar.current.date(byAdding: dateComponent, to: currentDate)?.getMonthName() ?? ""]
-        months += [currentDate.getMonthName()]
+        months += [Calendar.current.date(byAdding: dateComponent, to: currentDate)?.getMonthHeader() ?? ""]
+        months += [currentDate.getMonthHeader()]
         return months
     }
     
-    func getProgress(categoryName: String) -> Float {
+    func getProgress(categoryName: String, month: String) -> Float {
         var total: Float = 0.0
         if categoryName == "All" {
-            for transaction in allTransactions {
+            for transaction in allTransactions.filter({ $0.date.getMonthName() == month }) {
                 total += transaction.amount
             }
         } else {
-            for transaction in allTransactions.filter({$0.categoryName == categoryName}) {
+            for transaction in allTransactions.filter({ $0.date.getMonthName() == month && $0.categoryName == categoryName }) {
                 total += transaction.amount
             }
         }
         return total
     }
     
-    func getTodayValue(categoryName: String) -> CGFloat {
+    func getTodayValue(categoryName: String, month: String) -> CGFloat {
         guard let range = Calendar.current.range(of: .day, in: .month, for: currentDate) else { return 0.0 }
         let numDays = Float(range.count)
         var totalLimit: Float = 0.0
         var alreadySpent: Float = 0.0
         var yetToSpend: Float = 0.0
         if categoryName == "All" {
-            for tran in allTransactions {
+            for tran in allTransactions.filter({ $0.date.getMonthName() == month }) {
                 alreadySpent += tran.amount
             }
             for recTran in reoccurringTransactions {
@@ -154,7 +154,7 @@ public class Budget: NSObject, NSCoding {
             }
             totalLimit = Float(self.totalLimit)
         } else {
-            for tran in allTransactions.filter({$0.categoryName == categoryName}) {
+            for tran in allTransactions.filter({ $0.date.getMonthName() == month && $0.categoryName == categoryName }) {
                 alreadySpent += tran.amount
             }
             for recTran in reoccurringTransactions.filter({$0.categoryName == categoryName}) {
@@ -203,5 +203,12 @@ public class Budget: NSObject, NSCoding {
             dateFormatter.dateFormat = "MMMM dd, yyyy"
             let strMonth = dateFormatter.string(from: self)
             return strMonth
+        }
+        
+        func getMonthHeader() -> String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMMM yyyy"
+            let str = dateFormatter.string(from: self)
+            return str
         }
 }

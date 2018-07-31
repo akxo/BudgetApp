@@ -23,6 +23,7 @@
 		B384812320FD65B700DB97B7 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B384811F20FD65B700DB97B7 /* Budget.swift */; };
 		B384812420FD65B700DB97B7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B384812020FD65B700DB97B7 /* Category.swift */; };
 		B384812620FD65B700DB97B7 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B384812220FD65B700DB97B7 /* Transaction.swift */; };
+		B3BD1942210FDF2E005713A9 /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BD1941210FDF2E005713A9 /* AddCategoryViewController.swift */; };
 		B3BE9D7D2102EFC0003CB830 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BE9D7C2102EFC0003CB830 /* TransactionViewController.swift */; };
 		B3C3F056210D3DE100975BA5 /* BudgetPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C3F055210D3DE100975BA5 /* BudgetPageViewController.swift */; };
 		B3CCC5032104050A0065C792 /* MerchantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CCC5022104050A0065C792 /* MerchantViewController.swift */; };
@@ -47,6 +48,7 @@
 		B384811F20FD65B700DB97B7 /* Budget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		B384812020FD65B700DB97B7 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		B384812220FD65B700DB97B7 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		B3BD1941210FDF2E005713A9 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
 		B3BE9D7C2102EFC0003CB830 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TransactionViewController.swift; path = BudgetApp/Controller/TransactionViewController.swift; sourceTree = SOURCE_ROOT; };
 		B3C3F055210D3DE100975BA5 /* BudgetPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetPageViewController.swift; sourceTree = "<group>"; };
 		B3CCC5022104050A0065C792 /* MerchantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				B363DA1A210560CE00CE5142 /* CategoryViewController.swift */,
 				B3C3F055210D3DE100975BA5 /* BudgetPageViewController.swift */,
 				B370F35B21094D9800A6043F /* MonthlyBudgetViewController.swift */,
+				B3BD1941210FDF2E005713A9 /* AddCategoryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				B384812420FD65B700DB97B7 /* Category.swift in Sources */,
 				B3BE9D7D2102EFC0003CB830 /* TransactionViewController.swift in Sources */,
 				B3C3F056210D3DE100975BA5 /* BudgetPageViewController.swift in Sources */,
+				B3BD1942210FDF2E005713A9 /* AddCategoryViewController.swift in Sources */,
 				B370F35F21095F9100A6043F /* CategoryTableViewCell.swift in Sources */,
 				B363DA1B210560CE00CE5142 /* CategoryViewController.swift in Sources */,
 				B3CCC5032104050A0065C792 /* MerchantViewController.swift in Sources */,

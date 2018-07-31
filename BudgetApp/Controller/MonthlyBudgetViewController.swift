@@ -29,6 +29,8 @@ class MonthlyBudgetViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBOutlet weak var differenceLabel: UILabel!
     
+    @IBOutlet weak var budgetHeaderView: UIView!
+    
     @IBOutlet weak var budgetCategoriesTableView: UITableView!
     
     override func viewDidLoad() {
@@ -38,6 +40,11 @@ class MonthlyBudgetViewController: UIViewController, UITableViewDelegate, UITabl
         
         let nib = UINib(nibName: "CategoryTableViewCell", bundle: nil)
         budgetCategoriesTableView.register(nib, forCellReuseIdentifier: "CategoryTableViewCell")
+        
+        budgetHeaderView.layer.shadowColor = #colorLiteral(red: 0.4685588669, green: 0.4685588669, blue: 0.4685588669, alpha: 1)
+        budgetHeaderView.layer.shadowOpacity = 1.0
+        budgetHeaderView.layer.shadowOffset = CGSize.zero
+        budgetHeaderView.layer.shadowRadius = 6
         
         if categories.count == 0 {
             budgetCategoriesTableView.isHidden = true

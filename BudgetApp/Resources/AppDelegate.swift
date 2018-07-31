@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         UIApplication.shared.statusBarStyle = .lightContent
+        UINavigationBar.appearance().tintColor = .white
         
         // blue 00CCFF 40%
         

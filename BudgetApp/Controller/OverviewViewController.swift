@@ -40,7 +40,7 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
         recentTransactionsTableview.isScrollEnabled = false
         
         // clear data
-//        RootViewController.deleteBudget()
+//        OverviewViewController.deleteBudget()
         
         currentMonth = OverviewViewController.budget.currentDate.getMonthName()
         
@@ -52,7 +52,7 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
         
         monthLabel.text = "\(currentMonth) Budget"
         
-        todayValueConstraint.constant = (budgetProgress.frame.width * OverviewViewController.budget.getTodayValue(categoryName: "All", month: currentMonth)) + 20.0
+        todayValueConstraint.constant = ((UIScreen.main.bounds.width - 72) * OverviewViewController.budget.getTodayValue(categoryName: "All", month: currentMonth)) + 20.0
         
         
         
@@ -123,11 +123,6 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
         guard let budgetData = UserDefaults.standard.object(forKey: "budgetData") as? Data,
             let budget = NSKeyedUnarchiver.unarchiveObject(with: budgetData) as? Budget else {return Budget()}
         return budget
-    }
-    
-    static func saveBudget() {
-        let budgetData = NSKeyedArchiver.archivedData(withRootObject: budget)
-        UserDefaults.standard.set(budgetData, forKey: "budgetData")
     }
     
     static func deleteBudget() {

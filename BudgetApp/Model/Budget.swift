@@ -66,6 +66,7 @@ public class Budget: NSObject, NSCoding {
     // MARK: Functional Methods
     func addCategory(category: Category) {
         categories.append(category)
+        saveBudget()
         // TODO: Sort categories?
     }
     
@@ -73,6 +74,7 @@ public class Budget: NSObject, NSCoding {
         allTransactions.append(transaction)
         allTransactions.sort(by: {$0.date < $1.date})
         addMerchant(transaction: transaction)
+        saveBudget()
     }
     
     func addMerchant(transaction: Transaction) {
@@ -106,6 +108,12 @@ public class Budget: NSObject, NSCoding {
                 break
             }
         }
+    }
+    
+    // MARK: Memory Methods
+    private func saveBudget() {
+        let budgetData = NSKeyedArchiver.archivedData(withRootObject: self)
+        UserDefaults.standard.set(budgetData, forKey: "budgetData")
     }
     
     // MARK: Convinience Methods
@@ -168,9 +176,10 @@ public class Budget: NSObject, NSCoding {
             }
             totalLimit = Float((categories.filter({$0.name == categoryName}).first)?.limit ?? 0)
         }
+        guard totalLimit > 0 else { return 0.0 }
         guard yetToSpend <= totalLimit else { return 1.0 }
         let remainingLimit = totalLimit - yetToSpend
-        return CGFloat((remainingLimit / numDays) * Float(currentDate.day))
+        return CGFloat(((remainingLimit / numDays) * Float(currentDate.day)) / totalLimit)
 
     }
     

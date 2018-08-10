@@ -14,10 +14,9 @@ class MonthlyBudgetViewController: UIViewController, UITableViewDelegate, UITabl
     
     var year: String = ""
     
-    var categories: [Category] = [Category(name: "Food", limit: 300), Category(name: "Rent", limit: 1300), Category(name: "Gas", limit: 150),Category(name: "Food", limit: 300), Category(name: "Rent", limit: 1300),Category(name: "Food", limit: 300), Category(name: "Rent", limit: 1300),Category(name: "Food", limit: 300), Category(name: "Rent", limit: 1300)]
-//    {
-//        return OverviewViewController.budget.categories
-//    }
+    var categories: [Category] = {
+        return OverviewViewController.budget.categories
+    }()
     
     @IBOutlet weak var monthProgressBar: UIProgressView!
     
@@ -58,7 +57,7 @@ class MonthlyBudgetViewController: UIViewController, UITableViewDelegate, UITabl
         }
         progressLabel.text = "$\(total) of $\(OverviewViewController.budget.totalLimit)"
         
-        todayValueConstraint.constant = (monthProgressBar.frame.width * OverviewViewController.budget.getTodayValue(categoryName: "All", month: month)) + 32.0
+        todayValueConstraint.constant = ((UIScreen.main.bounds.width - 64) * OverviewViewController.budget.getTodayValue(categoryName: "All", month: month)) + 32.0
     }
     
     // MARK: TableView Methods
@@ -82,12 +81,13 @@ class MonthlyBudgetViewController: UIViewController, UITableViewDelegate, UITabl
         let difference = category.limit - total
         
         cell.budgetProgress.progress = OverviewViewController.budget.getProgress(categoryName: category.name, month: month)
-        cell.todayValueConstraint.constant = (cell.budgetProgress.frame.width * OverviewViewController.budget.getTodayValue(categoryName: category.name, month: month)) + 16.0
+        print(OverviewViewController.budget.getTodayValue(categoryName: category.name, month: month))
+        cell.todayValueConstraint.constant = ((UIScreen.main.bounds.width - 32) * OverviewViewController.budget.getTodayValue(categoryName: category.name, month: month)) + 16.0
         cell.categoryLabel.text = category.name
         cell.progressLabel.text = "$\(total) of $\(category.limit)"
         cell.differenceLabel.text = "$\(abs(difference)) " + (total <= 0 ? "Left" : difference <= 0 ? "Left" : "Over")
         return cell
     }
-    
-    
 }
+
+

@@ -83,7 +83,6 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
         } else {
             OverviewViewController.budget.addTransaction(transaction: transaction)
         } 
-        OverviewViewController.saveBudget()
     }
     
     @IBAction func textFieldDidChange(_ sender: UITextField) {

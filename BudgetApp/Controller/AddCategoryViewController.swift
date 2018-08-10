@@ -14,11 +14,13 @@ class AddCategoryViewController: UIViewController, UITableViewDelegate, UITableV
     
     var filteredSuggestedCategories: [String] = []
     
-    var customCategories: [Category] = OverviewViewController.budget.categories
-    
     var filteredCustomCategories: [Category] = []
     
     var isSearching: Bool = false
+    
+    var selectedCategory: String?
+    
+    var selectedIndex: Int?
     
     @IBOutlet weak var categorySearchBar: UISearchBar!
     
@@ -33,10 +35,23 @@ class AddCategoryViewController: UIViewController, UITableViewDelegate, UITableV
         navigationController?.navigationBar.shadowImage = UIImage()
         
         categorySearchBar.backgroundColor = #colorLiteral(red: 0.4039215686, green: 0.5254901961, blue: 0.7176470588, alpha: 1)
-        
+    
         filteredSuggestedCategories = suggestedCategories
-        filteredCustomCategories = customCategories
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        filteredCustomCategories = OverviewViewController.budget.categories
+        categoriesTableView.reloadData()
+    }
+    
+    // Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toCategoryLimit" {
+            let destination = segue.destination as? AddCategoryLimitViewController
+            destination?.categoryName = selectedCategory
+        } else if segue.identifier == "toEditCategory" {
+            
+        }
     }
     
     // SearchBar Methods
@@ -44,11 +59,11 @@ class AddCategoryViewController: UIViewController, UITableViewDelegate, UITableV
         if searchText != "" {
             let text = searchText.lowercased()
             filteredSuggestedCategories = suggestedCategories.filter({ $0.lowercased().contains(text) })
-            filteredCustomCategories = customCategories.filter({ $0.name.lowercased().contains(text) })
+            filteredCustomCategories = OverviewViewController.budget.categories.filter({ $0.name.lowercased().contains(text) })
             isSearching = true
         } else {
             filteredSuggestedCategories = suggestedCategories
-            filteredCustomCategories = customCategories
+            filteredCustomCategories = OverviewViewController.budget.categories
             isSearching = false
         }
         categoriesTableView.reloadData()
@@ -130,4 +145,33 @@ class AddCategoryViewController: UIViewController, UITableViewDelegate, UITableV
         }
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if isSearching {
+            if indexPath.section == 0 {
+                selectedCategory = categorySearchBar.text
+                performSegue(withIdentifier: "toCategoryLimit", sender: self)
+            } else if indexPath.section == 1 {
+                selectedIndex = indexPath.row
+//                performSegue(withIdentifier: "toEditCategory", sender: self)
+            } else if indexPath.section == 2 {
+                selectedCategory = suggestedCategories[indexPath.row]
+                performSegue(withIdentifier: "toCategoryLimit", sender: self)
+            }
+        } else {
+            if indexPath.section == 0 {
+                selectedIndex = indexPath.row
+//                performSegue(withIdentifier: "toEditCategory", sender: self)
+            } else if indexPath.section == 1 {
+                selectedCategory = suggestedCategories[indexPath.row]
+                performSegue(withIdentifier: "toCategoryLimit", sender: self)
+            }
+        }
+        if isSearching {
+            categorySearchBar.text = ""
+            searchBar(categorySearchBar, textDidChange: "")
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
+

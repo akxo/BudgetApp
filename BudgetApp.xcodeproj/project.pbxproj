@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B30DFE37211A80CB004FF3F1 /* AddCategoryLimitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30DFE36211A80CB004FF3F1 /* AddCategoryLimitViewController.swift */; };
 		B3131FF820FCC4F30073482A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3131FF720FCC4F30073482A /* AppDelegate.swift */; };
 		B3131FFA20FCC4F30073482A /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3131FF920FCC4F30073482A /* OverviewViewController.swift */; };
 		B3131FFD20FCC4F30073482A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3131FFB20FCC4F30073482A /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B30DFE36211A80CB004FF3F1 /* AddCategoryLimitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryLimitViewController.swift; sourceTree = "<group>"; };
 		B3131FF420FCC4F30073482A /* BudgetApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BudgetApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3131FF720FCC4F30073482A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3131FF920FCC4F30073482A /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				B3C3F055210D3DE100975BA5 /* BudgetPageViewController.swift */,
 				B370F35B21094D9800A6043F /* MonthlyBudgetViewController.swift */,
 				B3BD1941210FDF2E005713A9 /* AddCategoryViewController.swift */,
+				B30DFE36211A80CB004FF3F1 /* AddCategoryLimitViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				B370F35C21094D9800A6043F /* MonthlyBudgetViewController.swift in Sources */,
 				B363DA19210560A300CE5142 /* FrequencyViewController.swift in Sources */,
 				B3131FFA20FCC4F30073482A /* OverviewViewController.swift in Sources */,
+				B30DFE37211A80CB004FF3F1 /* AddCategoryLimitViewController.swift in Sources */,
 				B322F5C1210002970020564D /* TransactionTableViewCell.swift in Sources */,
 				B3131FF820FCC4F30073482A /* AppDelegate.swift in Sources */,
 				B384812620FD65B700DB97B7 /* Transaction.swift in Sources */,

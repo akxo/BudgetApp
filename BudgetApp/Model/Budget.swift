@@ -117,6 +117,14 @@ public class Budget: NSObject, NSCoding {
     }
     
     // MARK: Convinience Methods
+    func getTotalSpent(monthName: String) -> Int {
+        var totalSpent: Float = 0.0
+        for tran in allTransactions.filter({ $0.date.getMonthName() == monthName }) {
+            totalSpent += tran.amount
+        }
+        return Int(ceil(totalSpent))
+    }
+    
     func getMonths() -> [String] {
         var dateComponent = DateComponents()
         dateComponent.month = -2

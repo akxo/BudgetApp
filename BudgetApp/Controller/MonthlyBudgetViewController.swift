@@ -51,11 +51,12 @@ class MonthlyBudgetViewController: UIViewController, UITableViewDelegate, UITabl
         monthLabel.text = "\(month)"
         monthProgressBar.progress = OverviewViewController.budget.getProgress(categoryName: "All", month: month)
         monthProgressBar.trackTintColor = #colorLiteral(red: 0.862745098, green: 0.8509803922, blue: 0.8549019608, alpha: 1)
-        var total = 0
-        for tran in OverviewViewController.budget.allTransactions.filter({ $0.date.getMonthName() == month }) {
-            total += Int(ceil(tran.amount))
-        }
-        progressLabel.text = "$\(total) of $\(OverviewViewController.budget.totalLimit)"
+        
+        let totalSpent = OverviewViewController.budget.getTotalSpent(monthName: month)
+        let totalLimit = OverviewViewController.budget.totalLimit
+        let difference = totalSpent - totalLimit
+        differenceLabel.text = "$\(abs(difference)) " + (totalSpent <= 0 ? "Left" : difference <= 0 ? "Left" : "Over")
+        progressLabel.text = "$\(totalSpent) of $\(totalLimit)"
         
         todayValueConstraint.constant = ((UIScreen.main.bounds.width - 64) * OverviewViewController.budget.getTodayValue(categoryName: "All", month: month)) + 32.0
     }

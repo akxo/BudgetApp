@@ -367,16 +367,30 @@
                                             <constraint firstAttribute="height" constant="1" id="60i-wH-zod"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9XP-RE-lgH">
-                                        <rect key="frame" x="8" y="39.333333333333336" width="8.3333333333333357" height="22.666666666666664"/>
-                                        <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="17"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhr-zG-zCA">
-                                        <rect key="frame" x="382" y="38.666666666666664" width="8.3333333333333144" height="22.666666666666664"/>
-                                        <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="17"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZg-vY-bYw">
+                                        <rect key="frame" x="0.0" y="35.333333333333336" width="25" height="30.000000000000007"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="fja-A0-AfZ"/>
+                                            <constraint firstAttribute="height" constant="30" id="ojd-0e-hXW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="16"/>
+                                        <state key="normal" title="&lt;">
+                                            <color key="titleColor" red="0.59607843140000005" green="0.59607843140000005" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZU8-Tt-tyt">
+                                        <rect key="frame" x="373" y="35" width="25" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="4dX-ah-J6c"/>
+                                            <constraint firstAttribute="width" constant="25" id="JOz-Yg-ec7"/>
+                                            <constraint firstAttribute="height" constant="30" id="b9q-Wk-fvo"/>
+                                            <constraint firstAttribute="width" constant="25" id="if6-QX-29y"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="16"/>
+                                        <state key="normal" title="&gt;">
+                                            <color key="titleColor" red="0.59607843140000005" green="0.59607843140000005" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -384,24 +398,24 @@
                                     <constraint firstAttribute="trailing" secondItem="7lX-lg-KBm" secondAttribute="trailing" constant="32" id="2ll-ey-hDu"/>
                                     <constraint firstAttribute="trailing" secondItem="nEa-iQ-7a6" secondAttribute="trailing" constant="24" id="AtC-I7-Br5"/>
                                     <constraint firstItem="nEa-iQ-7a6" firstAttribute="centerY" secondItem="qVF-Ly-33P" secondAttribute="centerY" id="Hmg-lP-DyX"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZU8-Tt-tyt" secondAttribute="trailing" id="O7j-e2-iZA"/>
                                     <constraint firstItem="nEa-iQ-7a6" firstAttribute="leading" secondItem="qVF-Ly-33P" secondAttribute="leading" constant="40" id="Oqu-KE-WQd"/>
                                     <constraint firstAttribute="bottom" secondItem="lA4-qf-zMn" secondAttribute="bottom" id="PGZ-9M-jaN"/>
                                     <constraint firstAttribute="trailing" secondItem="lA4-qf-zMn" secondAttribute="trailing" id="XDg-8F-jOu"/>
                                     <constraint firstItem="xLn-UE-kST" firstAttribute="top" secondItem="7lX-lg-KBm" secondAttribute="bottom" constant="14" id="Xfe-f9-TiG"/>
                                     <constraint firstItem="7lX-lg-KBm" firstAttribute="centerY" secondItem="qVF-Ly-33P" secondAttribute="centerY" id="Y0y-z6-cDn"/>
                                     <constraint firstItem="G51-wV-Bhg" firstAttribute="top" secondItem="maA-dz-XPz" secondAttribute="bottom" constant="8" id="abh-63-vzO"/>
-                                    <constraint firstAttribute="trailing" secondItem="zhr-zG-zCA" secondAttribute="trailing" constant="8" id="bf9-qD-o0L"/>
                                     <constraint firstItem="7lX-lg-KBm" firstAttribute="leading" secondItem="qVF-Ly-33P" secondAttribute="leading" constant="32" id="c8L-Ha-led"/>
                                     <constraint firstItem="xLn-UE-kST" firstAttribute="centerX" secondItem="G51-wV-Bhg" secondAttribute="centerX" id="j45-j0-Og9"/>
+                                    <constraint firstItem="ZU8-Tt-tyt" firstAttribute="centerY" secondItem="qVF-Ly-33P" secondAttribute="centerY" id="jNa-15-au4"/>
                                     <constraint firstItem="lA4-qf-zMn" firstAttribute="leading" secondItem="qVF-Ly-33P" secondAttribute="leading" id="jQN-Zz-Y0r"/>
                                     <constraint firstItem="7lX-lg-KBm" firstAttribute="top" secondItem="sC9-Xl-0k3" secondAttribute="bottom" constant="8" id="laF-Bn-9go"/>
+                                    <constraint firstItem="XZg-vY-bYw" firstAttribute="leading" secondItem="qVF-Ly-33P" secondAttribute="leading" id="mPI-St-6Ne"/>
                                     <constraint firstItem="7lX-lg-KBm" firstAttribute="centerX" secondItem="qVF-Ly-33P" secondAttribute="centerX" id="nCK-3X-Mis"/>
-                                    <constraint firstItem="9XP-RE-lgH" firstAttribute="centerY" secondItem="qVF-Ly-33P" secondAttribute="centerY" id="nKA-2B-22c"/>
                                     <constraint firstAttribute="trailing" secondItem="sC9-Xl-0k3" secondAttribute="trailing" constant="32" id="oiG-IK-Gz4"/>
                                     <constraint firstAttribute="height" constant="100" id="pMm-jm-Zx1"/>
-                                    <constraint firstItem="zhr-zG-zCA" firstAttribute="centerY" secondItem="qVF-Ly-33P" secondAttribute="centerY" id="sNr-6c-IUu"/>
                                     <constraint firstItem="7lX-lg-KBm" firstAttribute="top" secondItem="maA-dz-XPz" secondAttribute="bottom" constant="8" id="upH-wK-di3"/>
-                                    <constraint firstItem="9XP-RE-lgH" firstAttribute="leading" secondItem="qVF-Ly-33P" secondAttribute="leading" constant="8" id="v00-uN-Him"/>
+                                    <constraint firstItem="XZg-vY-bYw" firstAttribute="centerY" secondItem="qVF-Ly-33P" secondAttribute="centerY" id="vjf-OG-9Cl"/>
                                     <constraint firstItem="G51-wV-Bhg" firstAttribute="leading" secondItem="qVF-Ly-33P" secondAttribute="leading" constant="32" id="zgT-DU-h0l"/>
                                 </constraints>
                             </view>

@@ -161,7 +161,7 @@ public class Budget: NSObject, NSCoding {
                 total += transaction.amount
             }
         }
-        return total
+        return (total / Float(totalLimit)) < 1.0 ? (total / Float(totalLimit)) : 1.0
     }
     
     func getTodayValue(categoryName: String, month: String) -> CGFloat {

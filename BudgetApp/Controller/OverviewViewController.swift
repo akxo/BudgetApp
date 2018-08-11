@@ -63,6 +63,15 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        // updateView()
+        
+        budgetProgress.progress = OverviewViewController.budget.getProgress(categoryName: "All", month: currentMonth)
+        todayValueConstraint.constant = ((UIScreen.main.bounds.width - 72) * OverviewViewController.budget.getTodayValue(categoryName: "All", month: currentMonth)) + 20.0
+        
+        recentTransactionsTableview.reloadData()
+    }
+    
     @objc private func budgetViewTapped(_ sender: UIGestureRecognizer) {
         performSegue(withIdentifier: "toBudgetDetail", sender: self)
     }

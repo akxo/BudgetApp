@@ -14,7 +14,11 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     
     var editingIndex: Int? = nil
     
-    var amount: Int = 0
+    var amount: Float = 0 {
+        didSet {
+            transaction.amount = self.amount
+        }
+    }
     
     let transactionInfoTitle = ["MERCHANT", "DATE", "REPEAT", "CATEGORY"]
 
@@ -45,15 +49,19 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        updateSaveButton()
+        transactionInfoTableView.reloadData()
+    }
+    
+    func updateSaveButton() {
         if transaction.isSavable {
             saveButton.isEnabled = true
         } else {
             saveButton.isEnabled = false
         }
-        transactionInfoTableView.reloadData()
     }
 
-    private func updateAmountLabel() {
+    private func updateAmount() {
         var label = "-$"
         if editingIndex != nil {
             label.append(String(transaction.amount))
@@ -75,6 +83,7 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
             }
         }
         amountLabel.text = label
+        amount = Float(String(label.split(separator: "$").last ?? "0.00")) ?? 0.0
     }
     
     @IBAction func saveTransaction(_ sender: Any) {
@@ -82,11 +91,13 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
             OverviewViewController.budget.allTransactions[editingIndex!] = transaction
         } else {
             OverviewViewController.budget.addTransaction(transaction: transaction)
-        } 
+        }
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func textFieldDidChange(_ sender: UITextField) {
-        updateAmountLabel()
+        updateAmount()
+        updateSaveButton()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

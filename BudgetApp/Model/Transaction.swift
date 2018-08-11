@@ -96,7 +96,7 @@ public class Transaction: NSObject, NSCoding {
         infoArray += [categoryName]
         let amount = String(self.amount).split(separator: ".")
         let integer = "-$\(amount[0])"
-        let decimal = String(amount[1])
+        let decimal = String(amount[1]).count == 2 ? String(amount[1]) : String(amount[1]) + "0"
         infoArray += [integer]
         infoArray += [decimal]
         return infoArray

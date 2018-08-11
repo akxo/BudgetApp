@@ -16,7 +16,8 @@ public class Budget: NSObject, NSCoding {
     var categories: [Category]
     var allTransactions: [Transaction]
     var reoccurringTransactions: [Transaction]
-    var recentMerchants: [String : String]
+    var allMerchants: [String : String]
+    var recentMerchants: [String]
     
     // MARK: Computed Properties
     var totalLimit: Int {
@@ -33,15 +34,17 @@ public class Budget: NSObject, NSCoding {
         self.categories = []
         self.allTransactions = []
         self.reoccurringTransactions = []
-        self.recentMerchants = [:]
+        self.allMerchants = [:]
+        self.recentMerchants = []
     }
     
-    init(currentDate: Date, categories: [Category], allTransactions: [Transaction], reoccurringTransactions: [Transaction], recentMerchants: [String : String]) {
+    init(currentDate: Date, categories: [Category], allTransactions: [Transaction], reoccurringTransactions: [Transaction], allMerchants: [String : String], recentMerchants: [String]) {
         self.currentDate = currentDate
         self.categories = categories
         self.allTransactions = allTransactions
-        self.reoccurringTransactions = []
-        self.recentMerchants = [:]
+        self.reoccurringTransactions = reoccurringTransactions
+        self.allMerchants = allMerchants
+        self.recentMerchants = recentMerchants
     }
     
     // Protocol Conformation
@@ -50,9 +53,10 @@ public class Budget: NSObject, NSCoding {
             let categories = aDecoder.decodeObject(forKey: "categories") as? [Category],
             let allTransactions = aDecoder.decodeObject(forKey: "allTransactions") as? [Transaction],
             let reoccurringTransactions = aDecoder.decodeObject(forKey: "reoccurringTransactions") as? [Transaction],
-        let recentMerchants = aDecoder.decodeObject(forKey: "recentMerchants") as? [String : String] else {return nil}
+        let allMerchants = aDecoder.decodeObject(forKey: "allMerchants") as? [String : String],
+            let recentMerchants = aDecoder.decodeObject(forKey: "recentMerchants") as? [String] else {return nil}
         
-        self.init(currentDate: currentDate, categories: categories, allTransactions: allTransactions, reoccurringTransactions: reoccurringTransactions, recentMerchants: recentMerchants)
+        self.init(currentDate: currentDate, categories: categories, allTransactions: allTransactions, reoccurringTransactions: reoccurringTransactions, allMerchants: allMerchants, recentMerchants: recentMerchants)
     }
     
     public func encode(with aCoder: NSCoder) {
@@ -60,14 +64,15 @@ public class Budget: NSObject, NSCoding {
         aCoder.encode(categories, forKey: "categories")
         aCoder.encode(allTransactions, forKey: "allTransactions")
         aCoder.encode(reoccurringTransactions, forKey: "reoccurringTransactions")
+        aCoder.encode(allMerchants, forKey: "allMerchants")
         aCoder.encode(recentMerchants, forKey: "recentMerchants")
     }
     
     // MARK: Functional Methods
     func addCategory(category: Category) {
         categories.append(category)
+        categories.sort(by: { $0.name < $1.name })
         saveBudget()
-        // TODO: Sort categories?
     }
     
     func addTransaction(transaction: Transaction) {
@@ -78,9 +83,14 @@ public class Budget: NSObject, NSCoding {
     }
     
     func addMerchant(transaction: Transaction) {
-//        var newMerchants = recentMerchants.filter({$0.name != transaction.merchant})
-//        newMerchants.insert((transaction.merchant, transaction.category), at: 0)
-//        recentMerchants = newMerchants
+        allMerchants[transaction.merchant] = transaction.categoryName
+        if let index = recentMerchants.index(of: transaction.merchant) {
+            recentMerchants.remove(at: index)
+        }
+        recentMerchants.insert(transaction.merchant, at: 0)
+        if allMerchants.count > 50 {
+            cleanUpMerchants()
+        }
     }
     
     func addReoccurringTransaction(transaction: Transaction) {
@@ -108,6 +118,11 @@ public class Budget: NSObject, NSCoding {
                 break
             }
         }
+    }
+    
+    private func cleanUpMerchants() {
+        let oldestMerchant = recentMerchants.remove(at: recentMerchants.endIndex)
+        allMerchants.removeValue(forKey: oldestMerchant)
     }
     
     // MARK: Memory Methods

@@ -35,6 +35,8 @@ class CategoryViewController: UIViewController, UITableViewDelegate, UITableView
         for cat in OverviewViewController.budget.categories {
             categories.append(cat.name)
         }
+        
+        filteredCategories = categories
     }
     
     // MARK: Search Bar Methods

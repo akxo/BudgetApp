@@ -82,7 +82,6 @@ class MonthlyBudgetViewController: UIViewController, UITableViewDelegate, UITabl
         let difference = category.limit - total
         
         cell.budgetProgress.progress = OverviewViewController.budget.getProgress(categoryName: category.name, month: month)
-        print(OverviewViewController.budget.getTodayValue(categoryName: category.name, month: month))
         cell.todayValueConstraint.constant = ((UIScreen.main.bounds.width - 32) * OverviewViewController.budget.getTodayValue(categoryName: category.name, month: month)) + 16.0
         cell.categoryLabel.text = category.name
         cell.progressLabel.text = "$\(total) of $\(category.limit)"

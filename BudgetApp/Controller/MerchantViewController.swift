@@ -12,9 +12,13 @@ class MerchantViewController: UIViewController, UITableViewDelegate, UITableView
 
     var delegate: MerchantViewControllerDelegate?
     
-    var merchants: [String] = []
+    var allMerchants: [String] = []
     
-    var filteredMerchants: [String] = []
+    var filteredAllMerchants: [String] = []
+    
+    var recentMerchants: [String] = []
+    
+    var filteredRecentMerchants: [String] = []
     
     var selectedMerchant: String?
     
@@ -34,41 +38,54 @@ class MerchantViewController: UIViewController, UITableViewDelegate, UITableView
         
         navigationItem.backBarButtonItem?.tintColor = UIColor.white
         
-        for merch in OverviewViewController.budget.recentMerchants {
-            merchants.append(merch.key)
-        }
-        
         merchantsTableView.alwaysBounceVertical = false
+        
+        allMerchants = Array(OverviewViewController.budget.allMerchants.keys)
+        recentMerchants = OverviewViewController.budget.recentMerchants
+        
+        filteredAllMerchants = allMerchants
+        filteredRecentMerchants = recentMerchants
     }
     
     // MARK: Search Bar Methods
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if isSearching {
-            filteredMerchants = merchants.filter({$0.contains(searchText) == true})
+            filteredAllMerchants = allMerchants.filter({$0.contains(searchText) == true})
+            filteredRecentMerchants = recentMerchants.filter({$0.contains(searchText) == true})
         } else {
-            filteredMerchants = merchants
+            filteredAllMerchants = allMerchants
+            filteredRecentMerchants = recentMerchants
         }
         merchantsTableView.reloadData()
     }
     
     // MARK: Tableview Methods
     func numberOfSections(in tableView: UITableView) -> Int {
-        if isSearching {
-            return 2
-        } else {
-            return 1
-        }
+        var sections = 3
+        if !isSearching { sections += -1 }
+        if filteredRecentMerchants.count == 0 { sections += -1}
+        if filteredAllMerchants.count < 5 { sections += -1}
+        print(sections)
+        return sections
     }
     
-    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if isSearching {
-            if section == 0 {
-                return ""
+            if section == 1 {
+                return "Recent Merchants"
+            } else if section == 2 {
+                return "All Merchants"
             } else {
-                return "Recent"
+                return ""
             }
         } else {
-            return "Recent"
+            if section == 0 {
+                return "Recent Merchants"
+            } else if section == 1 {
+                return "All Merchants"
+            } else {
+                return ""
+            }
         }
     }
     
@@ -76,9 +93,22 @@ class MerchantViewController: UIViewController, UITableViewDelegate, UITableView
         if isSearching {
             if section == 0 {
                 return 1
+            } else if section == 1 {
+                return filteredRecentMerchants.count < 5 ? filteredRecentMerchants.count : 5
+            } else if section == 2 {
+                return filteredAllMerchants.count
+            } else {
+                return 0
+            }
+        } else {
+            if section == 0 {
+                return filteredRecentMerchants.count < 5 ? filteredRecentMerchants.count : 5
+            } else if section == 1 {
+                return filteredAllMerchants.count
+            } else {
+                return 0
             }
         }
-        return merchants.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -86,34 +116,54 @@ class MerchantViewController: UIViewController, UITableViewDelegate, UITableView
         if isSearching {
             if indexPath.section == 0 {
                 cell.textLabel?.text = "Create \"\(merchantSearchBar.text ?? "")\""
-            } else {
-                cell.textLabel?.text = filteredMerchants[indexPath.row]
+            } else if indexPath.section == 1 {
+                cell.textLabel?.text = filteredRecentMerchants[indexPath.row]
+            } else if indexPath.section == 2 {
+                cell.textLabel?.text = filteredAllMerchants[indexPath.row]
             }
         } else {
-            cell.textLabel?.text = filteredMerchants[indexPath.row]
+            if indexPath.section == 0 {
+                cell.textLabel?.text = filteredRecentMerchants[indexPath.row]
+            } else if indexPath.section == 1 {
+                cell.textLabel?.text = filteredAllMerchants[indexPath.row]
+            }
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if isSearching, indexPath.section == 0 {
-            selectedMerchant = merchantSearchBar.text!
+        if isSearching {
+            if indexPath.section == 0 {
+                selectedMerchant = merchantSearchBar.text!
+            } else if indexPath.section == 1 {
+                selectedMerchant = filteredRecentMerchants[indexPath.row]
+            } else if indexPath.section == 2 {
+                selectedMerchant = filteredAllMerchants[indexPath.row]
+            }
         } else {
-            selectedMerchant = filteredMerchants[indexPath.row]
+            if indexPath.section == 0 {
+                selectedMerchant = filteredRecentMerchants[indexPath.row]
+            } else if indexPath.section == 1 {
+                selectedMerchant = filteredAllMerchants[indexPath.row]
+            }
         }
-        delegate?.sendMerchantBack(merchant: selectedMerchant!)
+        let category = OverviewViewController.budget.allMerchants[selectedMerchant!]
+        delegate?.sendMerchantBack(merchant: selectedMerchant!, category: category)
         tableView.deselectRow(at: indexPath, animated: true)
         self.navigationController?.popViewController(animated: true)
     }
 }
     
 protocol MerchantViewControllerDelegate {
-    func sendMerchantBack(merchant: String)
+    func sendMerchantBack(merchant: String, category: String?)
 }
 
 extension AddTransactionViewController: MerchantViewControllerDelegate {
-    func sendMerchantBack(merchant: String) {
+    func sendMerchantBack(merchant: String, category: String?) {
         self.transaction.merchant = merchant
+        if category != nil {
+            self.transaction.categoryName = category!
+        }
     }
 }
 

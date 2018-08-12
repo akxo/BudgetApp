@@ -129,11 +129,13 @@ class AddCategoryViewController: UIViewController, UITableViewDelegate, UITableV
         if isSearching {
             if section == 0 {
                 cell.textLabel?.text = "Create \"\(categorySearchBar.text!)\""
+                cell.detailTextLabel?.text = ""
             } else if section == 1 {
                 cell.textLabel?.text = filteredCustomCategories[indexPath.row].name
                 cell.detailTextLabel?.text = "$\(filteredCustomCategories[indexPath.row].limit)"
             } else if section == 2 {
                 cell.textLabel?.text = filteredSuggestedCategories[indexPath.row]
+                cell.detailTextLabel?.text = ""
             }
         } else {
             if section == 0 {
@@ -141,6 +143,7 @@ class AddCategoryViewController: UIViewController, UITableViewDelegate, UITableV
                 cell.detailTextLabel?.text = "$\(filteredCustomCategories[indexPath.row].limit)"
             } else if section == 1 {
                 cell.textLabel?.text = filteredSuggestedCategories[indexPath.row]
+                cell.detailTextLabel?.text = ""
             }
         }
         return cell

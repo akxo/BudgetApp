@@ -112,7 +112,7 @@ public class Transaction: NSObject, NSCoding {
     
     private func getDateInfo() -> (String, String) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM"
+        dateFormatter.dateFormat = "MMM dd"
         let dateInfo = dateFormatter.string(from: self.date).split(separator: " ")
         return (String(dateInfo[0]), String(dateInfo[1]))
         

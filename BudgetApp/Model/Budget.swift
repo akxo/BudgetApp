@@ -152,16 +152,19 @@ public class Budget: NSObject, NSCoding {
     
     func getProgress(categoryName: String, month: String) -> Float {
         var total: Float = 0.0
+        var limit: Float = 0.0
         if categoryName == "All" {
             for transaction in allTransactions.filter({ $0.date.getMonthName() == month }) {
                 total += transaction.amount
             }
+            limit = Float(totalLimit)
         } else {
             for transaction in allTransactions.filter({ $0.date.getMonthName() == month && $0.categoryName == categoryName }) {
                 total += transaction.amount
             }
+            limit = Float(categories.first(where: {$0.name == categoryName })?.limit ?? 0)
         }
-        return total == 0.0 ? 0 : (total / Float(totalLimit)) < 1.0 ? (total / Float(totalLimit)) : 1.0
+        return total == 0.0 ? 0 : (total / limit) < 1.0 ? (total / limit) : 1.0
     }
     
     func getTodayValue(categoryName: String, month: String) -> CGFloat {

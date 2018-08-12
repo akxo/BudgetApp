@@ -34,6 +34,10 @@ class AddCategoryLimitViewController: UIViewController, UITextFieldDelegate {
         referenceTextField.tintColor = UIColor.clear
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.title = categoryName
+    }
+    
     @IBAction func saveCategory(_ sender: UIBarButtonItem) {
         guard let name = categoryName, let limit = self.limit else { return }
         OverviewViewController.budget.addCategory(category: Category(name: name, limit: limit))

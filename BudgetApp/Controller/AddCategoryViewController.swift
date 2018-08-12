@@ -131,14 +131,14 @@ class AddCategoryViewController: UIViewController, UITableViewDelegate, UITableV
                 cell.textLabel?.text = "Create \"\(categorySearchBar.text!)\""
             } else if section == 1 {
                 cell.textLabel?.text = filteredCustomCategories[indexPath.row].name
-                cell.detailTextLabel?.text = "\(filteredCustomCategories[indexPath.row].limit)"
+                cell.detailTextLabel?.text = "$\(filteredCustomCategories[indexPath.row].limit)"
             } else if section == 2 {
                 cell.textLabel?.text = filteredSuggestedCategories[indexPath.row]
             }
         } else {
             if section == 0 {
                 cell.textLabel?.text = filteredCustomCategories[indexPath.row].name
-                cell.detailTextLabel?.text = "\(filteredCustomCategories[indexPath.row].limit)"
+                cell.detailTextLabel?.text = "$\(filteredCustomCategories[indexPath.row].limit)"
             } else if section == 1 {
                 cell.textLabel?.text = filteredSuggestedCategories[indexPath.row]
             }

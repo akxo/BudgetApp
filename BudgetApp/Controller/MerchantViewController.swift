@@ -65,7 +65,6 @@ class MerchantViewController: UIViewController, UITableViewDelegate, UITableView
         if !isSearching { sections += -1 }
         if filteredRecentMerchants.count == 0 { sections += -1}
         if filteredAllMerchants.count < 5 { sections += -1}
-        print(sections)
         return sections
     }
     

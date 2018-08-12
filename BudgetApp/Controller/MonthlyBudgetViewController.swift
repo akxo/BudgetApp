@@ -48,9 +48,10 @@ class MonthlyBudgetViewController: UIViewController, UITableViewDelegate, UITabl
         if categories.count == 0 {
             budgetCategoriesTableView.isHidden = true
         }
-        monthLabel.text = "\(month)"
+        monthLabel.text = "\(month) \(year)"
         monthProgressBar.progress = OverviewViewController.budget.getProgress(categoryName: "All", month: month)
         monthProgressBar.trackTintColor = #colorLiteral(red: 0.862745098, green: 0.8509803922, blue: 0.8549019608, alpha: 1)
+        monthProgressBar.progressTintColor = #colorLiteral(red: 0, green: 0.7675034874, blue: 0.2718033226, alpha: 0.7043225365)
         
         let totalSpent = OverviewViewController.budget.getTotalSpent(monthName: month)
         let totalLimit = OverviewViewController.budget.totalLimit
@@ -78,7 +79,7 @@ class MonthlyBudgetViewController: UIViewController, UITableViewDelegate, UITabl
         for tran in OverviewViewController.budget.allTransactions.filter({$0.date.getMonthName() == month && $0.categoryName == category.name}) {
             temp += tran.amount
         }
-        let total = Int(temp)
+        let total = Int(ceil(temp))
         let difference = category.limit - total
         
         cell.budgetProgress.progress = OverviewViewController.budget.getProgress(categoryName: category.name, month: month)

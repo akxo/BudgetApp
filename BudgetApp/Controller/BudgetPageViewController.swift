@@ -33,7 +33,9 @@ class BudgetPageViewController: UIPageViewController, UIPageViewControllerDelega
     
     private func addMonthlyBudget(monthName: String) -> MonthlyBudgetViewController {
         let viewController = storyboard?.instantiateViewController(withIdentifier: "MonthlyBudgetViewController") as? MonthlyBudgetViewController ?? MonthlyBudgetViewController()
-        viewController.month = monthName
+        let strArr = monthName.split(separator: " ")
+        viewController.month = String(strArr[0])
+        viewController.year = String(strArr[1])
         return viewController
     }
 

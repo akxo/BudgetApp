@@ -131,6 +131,10 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
     static func getBudget() -> Budget {
         guard let budgetData = UserDefaults.standard.object(forKey: "budgetData") as? Data,
             let budget = NSKeyedUnarchiver.unarchiveObject(with: budgetData) as? Budget else {return Budget()}
+        let now = Date()
+        if budget.currentDate < now && budget.currentDate.day < now.day {
+            budget.updateDate()
+        }
         return budget
     }
     

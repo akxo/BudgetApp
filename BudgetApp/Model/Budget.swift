@@ -77,7 +77,7 @@ public class Budget: NSObject, NSCoding {
     
     func addTransaction(transaction: Transaction) {
         allTransactions.append(transaction)
-        allTransactions.sort(by: {$0.date < $1.date})
+        allTransactions.sort(by: {$0.date > $1.date})
         addMerchant(transaction: transaction)
         saveBudget()
     }
@@ -101,6 +101,12 @@ public class Budget: NSObject, NSCoding {
     }
     
     // MARK: Updating Methods
+    func updateDate() {
+        currentDate = Date()
+        manageAllTransactions()
+        saveBudget()
+    }
+    
     func manageAllTransactions() {
         var dateComponent = DateComponents()
         dateComponent.month = -2

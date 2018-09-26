@@ -176,6 +176,7 @@ public class Budget: NSObject, NSCoding {
     func getTodayValue(categoryName: String, month: String) -> CGFloat {
         guard let range = Calendar.current.range(of: .day, in: .month, for: currentDate) else { return 0.0 }
         let numDays = Float(range.count)
+        guard currentDate.getMonthName() == month else { return 1.0 }
         var totalLimit: Float = 0.0
         var alreadySpent: Float = 0.0
         var yetToSpend: Float = 0.0

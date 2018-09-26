@@ -59,7 +59,7 @@ class MonthlyBudgetViewController: UIViewController, UITableViewDelegate, UITabl
         differenceLabel.text = "$\(abs(difference)) " + (totalSpent <= 0 ? "Left" : difference <= 0 ? "Left" : "Over")
         progressLabel.text = "$\(totalSpent) of $\(totalLimit)"
         
-        todayValueConstraint.constant = ((UIScreen.main.bounds.width - 64) * OverviewViewController.budget.getTodayValue(categoryName: "All", month: month)) + 32.0
+        todayValueConstraint.constant = ((UIScreen.main.bounds.width - 80.0) * OverviewViewController.budget.getTodayValue(categoryName: "All", month: month)) + 32.0
     }
     
     // MARK: TableView Methods
@@ -80,10 +80,10 @@ class MonthlyBudgetViewController: UIViewController, UITableViewDelegate, UITabl
             temp += tran.amount
         }
         let total = Int(ceil(temp))
-        let difference = category.limit - total
+        let difference = total - category.limit
         
         cell.budgetProgress.progress = OverviewViewController.budget.getProgress(categoryName: category.name, month: month)
-        cell.todayValueConstraint.constant = ((UIScreen.main.bounds.width - 32) * OverviewViewController.budget.getTodayValue(categoryName: category.name, month: month)) + 16.0
+        cell.todayValueConstraint.constant = ((UIScreen.main.bounds.width - 80) * OverviewViewController.budget.getTodayValue(categoryName: category.name, month: month)) + 25.0
         cell.categoryLabel.text = category.name
         cell.progressLabel.text = "$\(total) of $\(category.limit)"
         cell.differenceLabel.text = "$\(abs(difference)) " + (total <= 0 ? "Left" : difference <= 0 ? "Left" : "Over")

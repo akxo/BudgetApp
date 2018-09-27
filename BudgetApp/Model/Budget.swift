@@ -68,7 +68,7 @@ public class Budget: NSObject, NSCoding {
         aCoder.encode(recentMerchants, forKey: "recentMerchants")
     }
     
-    // MARK: Functional Methods
+    // MARK: Adding Methods
     func addCategory(category: Category) {
         categories.append(category)
         categories.sort(by: { $0.name < $1.name })
@@ -98,6 +98,12 @@ public class Budget: NSObject, NSCoding {
             allTransactions.append(transaction)
         }
         reoccurringTransactions.append(transaction)
+    }
+    
+    // MARK: Editing Methods
+    func changeCategoryLimit(categoryName: String, newLimit: Int) {
+        categories.first(where: { $0.name == categoryName })?.limit = newLimit
+        saveBudget()
     }
     
     // MARK: Updating Methods

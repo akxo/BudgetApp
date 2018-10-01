@@ -18,10 +18,15 @@ class AddCategoryLimitViewController: UIViewController, UITextFieldDelegate {
         didSet {
             limitLabel.text = "$\(limit ?? 0)"
             messageLabel.text = "A budget of \(limitLabel.text ?? "$0") will be set for \(categoryName ?? "the category")."
-            saveButton.isEnabled = (limit ?? 0) != 0
+            if saveButton != nil {
+                saveButton.isEnabled = (limit ?? 0) != 0
+            }
         }
     }
+    
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    @IBOutlet weak var categoryLabel: UILabel!
     
     @IBOutlet weak var messageLabel: UILabel!
     
@@ -43,7 +48,21 @@ class AddCategoryLimitViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationItem.title = categoryName
+        messageLabel.text = categoryName
+    }
+    
+    func showCancelButton() {
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(hideCancelButton))
+        self.navigationItem.leftBarButtonItem = cancelButton
+    }
+    
+    @objc func hideCancelButton() {
+        // set everything back to the original
+        self.navigationItem.leftBarButtonItem = nil
+    }
+    
+    @IBAction func editCategoryName(_ sender: UIButton) {
+        showCancelButton()
     }
     
     @IBAction func saveCategory(_ sender: UIBarButtonItem) {

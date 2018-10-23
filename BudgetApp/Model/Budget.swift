@@ -239,6 +239,11 @@ public class Budget: NSObject, NSCoding {
             return Calendar.current.date(byAdding: dateComponents, to: firstDay) ?? Date()
         }
         
+        static func < (lhs: Date, rhs: Date) -> Bool {
+            let order = Calendar.current.compare(lhs, to: rhs, toGranularity: .day)
+            return order == .orderedAscending
+        }
+        
         func getMonthName() -> String {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MMMM"

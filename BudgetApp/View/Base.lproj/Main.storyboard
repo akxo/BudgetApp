@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="z7U-Eo-DZw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="z7U-Eo-DZw">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,7 +34,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RED-QZ-4RT">
-                                        <rect key="frame" x="226.33333333333334" y="71" width="34.000000000000028" height="14.333333333333329"/>
+                                        <rect key="frame" x="225.66666666666666" y="71" width="33.999999999999972" height="14.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.54509803921568623" green="0.54509803921568623" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -78,7 +77,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WiW-te-fIZ">
-                                        <rect key="frame" x="104" y="426" width="175" height="40"/>
+                                        <rect key="frame" x="103.66666666666669" y="426" width="175" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="175" id="9KX-eg-h5L"/>
                                             <constraint firstAttribute="height" constant="40" id="XLc-jM-4a9"/>
@@ -126,7 +125,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Overview" id="iTN-2i-YKd">
-                        <barButtonItem key="leftBarButtonItem" image="settings" style="plain" id="EME-Xu-iab">
+                        <barButtonItem key="leftBarButtonItem" image="settings" style="done" id="EME-Xu-iab">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="dWw-33-upL">
@@ -155,7 +154,7 @@
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="MyC-Go-ib8" customClass="BudgetPageViewController" customModule="BudgetApp" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Budget" id="5wk-HE-8ys">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="CB6-Dt-Ffx">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="CB6-Dt-Ffx">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="PCF-gV-Z3v" kind="show" id="p3f-YD-3G1"/>
@@ -271,13 +270,13 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Groceries" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEF-TR-VTS">
-                                <rect key="frame" x="135.33333333333331" y="20" width="144.33333333333331" height="42"/>
+                                <rect key="frame" x="135" y="20" width="144.33333333333337" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VjC-HX-NOM">
-                                <rect key="frame" x="291.66666666666669" y="34" width="21" height="20"/>
+                                <rect key="frame" x="291.33333333333331" y="34" width="21" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="1lz-S0-sDi"/>
                                     <constraint firstAttribute="width" constant="21" id="PbE-7w-Ehl"/>
@@ -356,7 +355,7 @@
                                         <color key="trackTintColor" red="0.66274509800000003" green="0.66274509800000003" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </progressView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEa-iQ-7a6" customClass="monthlyBudgetViewController">
-                                        <rect key="frame" x="40" y="42.666666666666664" width="334" height="14.333333333333336"/>
+                                        <rect key="frame" x="40" y="43" width="334" height="14.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -394,7 +393,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZg-vY-bYw">
-                                        <rect key="frame" x="0.0" y="35.333333333333336" width="25" height="30.000000000000007"/>
+                                        <rect key="frame" x="0.0" y="35" width="25" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="fja-A0-AfZ"/>
                                             <constraint firstAttribute="height" constant="30" id="ojd-0e-hXW"/>
@@ -573,6 +572,7 @@
                     <connections>
                         <outlet property="amountLabel" destination="cgU-xk-SML" id="lwl-TJ-3hh"/>
                         <outlet property="amountTextField" destination="v5E-aS-oSp" id="xrd-t6-c2l"/>
+                        <outlet property="deleteButton" destination="9RD-zg-Gky" id="5t4-dS-qke"/>
                         <outlet property="keyboardHeightConstraint" destination="QSS-Rt-L35" id="6xD-YS-GfL"/>
                         <outlet property="saveButton" destination="LTt-kk-efA" id="wk1-dX-hlF"/>
                         <outlet property="transactionInfoTableView" destination="lig-WF-S8M" id="5wA-hL-hAV"/>
@@ -595,7 +595,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lCE-4T-Q52">
-                                <rect key="frame" x="0.0" y="56" width="414" height="550"/>
+                                <rect key="frame" x="0.0" y="53" width="414" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" id="iJQ-Zl-Apg">
@@ -612,8 +612,9 @@
                                     <outlet property="delegate" destination="fNt-ef-vel" id="ngd-sS-TrI"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" placeholder="Enter category name" translatesAutoresizingMaskIntoConstraints="NO" id="CJX-9D-gun">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                            <searchBar contentMode="redraw" placeholder="Enter category name" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJX-9D-gun">
+                                <rect key="frame" x="0.0" y="-3" width="414" height="56"/>
+                                <color key="barTintColor" red="0.4039215686" green="0.52549019610000003" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="fNt-ef-vel" id="uUl-SM-1mj"/>
@@ -623,7 +624,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="TTh-He-AVb" firstAttribute="trailing" secondItem="lCE-4T-Q52" secondAttribute="trailing" id="4SA-aZ-epz"/>
-                            <constraint firstItem="CJX-9D-gun" firstAttribute="top" secondItem="TTh-He-AVb" secondAttribute="top" id="G6q-Yr-Jwb"/>
+                            <constraint firstItem="CJX-9D-gun" firstAttribute="top" secondItem="TTh-He-AVb" secondAttribute="top" constant="-3" id="G6q-Yr-Jwb"/>
                             <constraint firstItem="TTh-He-AVb" firstAttribute="bottom" secondItem="lCE-4T-Q52" secondAttribute="bottom" constant="66" id="GRv-Xq-de1"/>
                             <constraint firstItem="lCE-4T-Q52" firstAttribute="top" secondItem="CJX-9D-gun" secondAttribute="bottom" id="JB4-Bo-UC8"/>
                             <constraint firstItem="lCE-4T-Q52" firstAttribute="leading" secondItem="TTh-He-AVb" secondAttribute="leading" id="OhU-hF-A1D"/>
@@ -775,15 +776,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Enter merchant name" translatesAutoresizingMaskIntoConstraints="NO" id="T1g-he-OcU">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                            <searchBar contentMode="redraw" placeholder="Enter merchant name" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1g-he-OcU">
+                                <rect key="frame" x="0.0" y="-3" width="414" height="56"/>
+                                <color key="barTintColor" red="0.4039215686" green="0.52549019610000003" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="gip-3p-imX" id="278-yi-QAL"/>
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hxH-5K-rFj">
-                                <rect key="frame" x="0.0" y="56" width="414" height="550"/>
+                                <rect key="frame" x="0.0" y="53" width="414" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="merchantCell" textLabel="VLC-ol-rcM" style="IBUITableViewCellStyleDefault" id="diB-6d-SIS">
@@ -817,7 +819,7 @@
                             <constraint firstItem="hxH-5K-rFj" firstAttribute="top" secondItem="T1g-he-OcU" secondAttribute="bottom" id="SdN-Gu-OBT"/>
                             <constraint firstItem="T1g-he-OcU" firstAttribute="leading" secondItem="DYT-Ta-QLy" secondAttribute="leading" id="Swp-mb-S9d"/>
                             <constraint firstItem="DYT-Ta-QLy" firstAttribute="bottom" secondItem="hxH-5K-rFj" secondAttribute="bottom" constant="66" id="b6r-kj-6Db"/>
-                            <constraint firstItem="T1g-he-OcU" firstAttribute="top" secondItem="DYT-Ta-QLy" secondAttribute="top" id="g1n-Tl-QB9"/>
+                            <constraint firstItem="T1g-he-OcU" firstAttribute="top" secondItem="DYT-Ta-QLy" secondAttribute="top" constant="-3" id="g1n-Tl-QB9"/>
                             <constraint firstItem="hxH-5K-rFj" firstAttribute="leading" secondItem="DYT-Ta-QLy" secondAttribute="leading" id="mVH-Vm-JO0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DYT-Ta-QLy"/>
@@ -854,7 +856,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="edit" width="30" height="30"/>
-        <image name="settings" width="16" height="16"/>
+        <image name="edit" width="67.5" height="67.5"/>
+        <image name="settings" width="12.800000190734863" height="12.800000190734863"/>
     </resources>
 </document>

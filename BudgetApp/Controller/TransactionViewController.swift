@@ -30,6 +30,8 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
+    @IBOutlet weak var deleteButton: UIButton!
+    
     @IBOutlet weak var keyboardHeightConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
@@ -102,7 +104,7 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Back button
-        let backItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.done, target: self, action: nil)
+        let backItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: nil)
         navigationItem.backBarButtonItem = backItem
         navigationItem.backBarButtonItem?.tintColor = UIColor.white
         
@@ -145,7 +147,7 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionInfo", for: indexPath)
-        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+        cell.accessoryType = .disclosureIndicator
         cell.textLabel?.text = transactionInfoTitle[indexPath.row]
         cell.detailTextLabel?.text = transaction.getDetailInfo()[indexPath.row]
         return cell

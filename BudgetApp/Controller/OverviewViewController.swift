@@ -116,11 +116,11 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addTransaction" {
-            let backItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.done, target: self, action: nil)
+            let backItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: nil)
             navigationItem.backBarButtonItem = backItem
             navigationItem.backBarButtonItem?.tintColor = UIColor.white
         } else if segue.identifier == "toBudgetDetail" {
-            let backItem = UIBarButtonItem(title: "Overview", style: UIBarButtonItemStyle.done, target: self, action: nil)
+            let backItem = UIBarButtonItem(title: "Overview", style: .done, target: self, action: nil)
             navigationItem.backBarButtonItem = backItem
             navigationItem.backBarButtonItem?.tintColor = UIColor.white
             let destination = segue.destination as? BudgetPageViewController

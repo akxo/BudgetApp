@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B30DFE37211A80CB004FF3F1 /* AddCategoryLimitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30DFE36211A80CB004FF3F1 /* AddCategoryLimitViewController.swift */; };
+		B310A4E8219799C000693F38 /* AllTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B310A4E7219799C000693F38 /* AllTransactionsViewController.swift */; };
 		B3131FF820FCC4F30073482A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3131FF720FCC4F30073482A /* AppDelegate.swift */; };
 		B3131FFA20FCC4F30073482A /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3131FF920FCC4F30073482A /* OverviewViewController.swift */; };
 		B3131FFD20FCC4F30073482A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3131FFB20FCC4F30073482A /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		B30DFE36211A80CB004FF3F1 /* AddCategoryLimitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryLimitViewController.swift; sourceTree = "<group>"; };
+		B310A4E7219799C000693F38 /* AllTransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTransactionsViewController.swift; sourceTree = "<group>"; };
 		B3131FF420FCC4F30073482A /* BudgetApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BudgetApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3131FF720FCC4F30073482A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3131FF920FCC4F30073482A /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				B3131FF920FCC4F30073482A /* OverviewViewController.swift */,
+				B310A4E7219799C000693F38 /* AllTransactionsViewController.swift */,
 				B3BE9D7C2102EFC0003CB830 /* TransactionViewController.swift */,
 				B3CCC5022104050A0065C792 /* MerchantViewController.swift */,
 				B36EE4C12104F55300AF228C /* DateViewController.swift */,
@@ -226,6 +229,7 @@
 				B322F5C1210002970020564D /* TransactionTableViewCell.swift in Sources */,
 				B3131FF820FCC4F30073482A /* AppDelegate.swift in Sources */,
 				B384812620FD65B700DB97B7 /* Transaction.swift in Sources */,
+				B310A4E8219799C000693F38 /* AllTransactionsViewController.swift in Sources */,
 				B384812320FD65B700DB97B7 /* Budget.swift in Sources */,
 				B384812420FD65B700DB97B7 /* Category.swift in Sources */,
 				B3BE9D7D2102EFC0003CB830 /* TransactionViewController.swift in Sources */,

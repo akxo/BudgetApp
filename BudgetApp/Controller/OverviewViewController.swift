@@ -29,9 +29,6 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var recentTransactionsLabel: UILabel!
     @IBOutlet weak var recentTransactionsTableview: UITableView!
     
-    @IBAction func allTransactionsButton(_ sender: UIButton) {
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

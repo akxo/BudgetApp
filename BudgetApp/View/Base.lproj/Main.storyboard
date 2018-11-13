@@ -86,7 +86,7 @@
                                             <color key="titleColor" red="0.40392156862745099" green="0.52549019607843139" blue="0.71764705882352942" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="allTransactionsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xfR-p8-rKN"/>
+                                            <segue destination="2o0-5H-blT" kind="show" id="qDZ-y9-DaQ"/>
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f7m-xF-ERc">
@@ -147,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2052" y="-19.95073891625616"/>
+            <point key="canvasLocation" x="-2052" y="-20"/>
         </scene>
         <!--Budget-->
         <scene sceneID="djY-oP-YvV">
@@ -470,6 +470,82 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y4O-yD-1KK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1213.0434782608697" y="-1013.3152173913044"/>
+        </scene>
+        <!--All Transactions-->
+        <scene sceneID="2Wc-Bv-oCc">
+            <objects>
+                <viewController title="All Transactions" id="2o0-5H-blT" customClass="AllTransactionsViewController" customModule="BudgetApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OBm-Sv-27V">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" text="" placeholder="Search for transactions" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yy-RT-E4G">
+                                <rect key="frame" x="0.0" y="-3" width="367" height="56"/>
+                                <color key="tintColor" red="0.4039215686" green="0.52549019610000003" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" red="0.4039215686" green="0.52549019610000003" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2o0-5H-blT" id="pwg-Qm-yzQ"/>
+                                </connections>
+                            </searchBar>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jYE-Ba-oFm">
+                                <rect key="frame" x="364" y="-3" width="50" height="56"/>
+                                <subviews>
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvQ-cr-hMP">
+                                        <rect key="frame" x="8.6666666666666856" y="15.666666666666671" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="Whl-qH-HKB"/>
+                                            <constraint firstAttribute="height" constant="25" id="c1z-9n-kGw"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="filter"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.4039215686" green="0.52549019610000003" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.4039215686" green="0.52549019610000003" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="J0k-HG-Pap"/>
+                                    <constraint firstItem="pvQ-cr-hMP" firstAttribute="centerY" secondItem="jYE-Ba-oFm" secondAttribute="centerY" id="tY4-h6-vEf"/>
+                                    <constraint firstItem="pvQ-cr-hMP" firstAttribute="centerX" secondItem="jYE-Ba-oFm" secondAttribute="centerX" constant="-4" id="yOU-D9-JEg"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x96-ei-gJ6">
+                                <rect key="frame" x="0.0" y="53" width="414" height="619"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="2o0-5H-blT" id="SPc-6B-PXc"/>
+                                    <outlet property="delegate" destination="2o0-5H-blT" id="Efr-LL-zPd"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jYE-Ba-oFm" firstAttribute="top" secondItem="6Yy-RT-E4G" secondAttribute="top" id="3Ol-aA-3MK"/>
+                            <constraint firstItem="x96-ei-gJ6" firstAttribute="leading" secondItem="NYB-D7-eWt" secondAttribute="leading" id="7Gc-Ka-GmI"/>
+                            <constraint firstItem="NYB-D7-eWt" firstAttribute="trailing" secondItem="x96-ei-gJ6" secondAttribute="trailing" id="9Hc-hU-gyR"/>
+                            <constraint firstAttribute="trailing" secondItem="jYE-Ba-oFm" secondAttribute="trailing" id="CKq-wn-0Tc"/>
+                            <constraint firstItem="6Yy-RT-E4G" firstAttribute="top" secondItem="NYB-D7-eWt" secondAttribute="top" constant="-3" id="LZ5-nu-hVe"/>
+                            <constraint firstItem="jYE-Ba-oFm" firstAttribute="leading" secondItem="6Yy-RT-E4G" secondAttribute="trailing" constant="-3" id="VUb-He-3lb"/>
+                            <constraint firstItem="NYB-D7-eWt" firstAttribute="bottom" secondItem="x96-ei-gJ6" secondAttribute="bottom" id="gPr-Ud-zKo"/>
+                            <constraint firstItem="x96-ei-gJ6" firstAttribute="top" secondItem="6Yy-RT-E4G" secondAttribute="bottom" id="i7I-ds-JBj"/>
+                            <constraint firstItem="jYE-Ba-oFm" firstAttribute="bottom" secondItem="6Yy-RT-E4G" secondAttribute="bottom" id="kt8-od-4a2"/>
+                            <constraint firstItem="6Yy-RT-E4G" firstAttribute="leading" secondItem="NYB-D7-eWt" secondAttribute="leading" id="xMH-Vl-4Ym"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NYB-D7-eWt"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="All Transactions" id="BSW-bG-uX9">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="uL1-Dn-Bd7">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="allTransactionsTableView" destination="x96-ei-gJ6" id="ewI-67-Wp3"/>
+                        <outlet property="transactionSearchBar" destination="6Yy-RT-E4G" id="uJy-jO-ueq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NOu-xv-TD3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2052.1739130434785" y="685.59782608695662"/>
         </scene>
         <!--Transaction-->
         <scene sceneID="F5p-PN-nCf">
@@ -857,6 +933,7 @@
     </scenes>
     <resources>
         <image name="edit" width="67.5" height="67.5"/>
+        <image name="filter" width="37.5" height="37.5"/>
         <image name="settings" width="12.800000190734863" height="12.800000190734863"/>
     </resources>
 </document>

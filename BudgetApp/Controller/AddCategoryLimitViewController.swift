@@ -49,6 +49,7 @@ class AddCategoryLimitViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         messageLabel.text = categoryName
+        categoryLabel.text = categoryName
     }
     
     func showCancelButton() {

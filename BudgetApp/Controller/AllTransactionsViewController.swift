@@ -14,7 +14,7 @@ class AllTransactionsViewController: UIViewController, UITableViewDelegate, UITa
     @IBOutlet weak var allTransactionsTableView: UITableView!
     
     var monthlyTransactions = [[Transaction]]()
-    var filteredMonthlyTransactions = [Transaction]()
+    var filteredMonthlyTransactions = [[Transaction]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +36,27 @@ class AllTransactionsViewController: UIViewController, UITableViewDelegate, UITa
                 monthlyTransactions.insert(transactions, at: 0)
             }
         }
+        filteredMonthlyTransactions = monthlyTransactions
     }
     
     // MARK SearchBar Methods
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+        if let text = transactionSearchBar.text?.lowercased(), !text.isEmpty {
+            filteredMonthlyTransactions = []
+            for transactions in monthlyTransactions {
+                filteredMonthlyTransactions.append(transactions.filter({
+                    $0.categoryName.lowercased().contains(text)
+                    || $0.merchant.lowercased().contains(text)
+                    || "\($0.amount)".contains(text) }))
+            }
+        } else {
+            filteredMonthlyTransactions = monthlyTransactions
+        }
+        allTransactionsTableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
     
     // MARK: TableView Methods
@@ -49,19 +65,19 @@ class AllTransactionsViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if let date = monthlyTransactions[section].first?.date {
+        if let date = filteredMonthlyTransactions[section].first?.date {
             return date.getMonthHeader()
         }
         return nil
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return monthlyTransactions[section].count
+        return filteredMonthlyTransactions[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTableViewCell", for: indexPath) as! TransactionTableViewCell
-        let transaction = monthlyTransactions[indexPath.section][indexPath.row]
+        let transaction = filteredMonthlyTransactions[indexPath.section][indexPath.row]
         let transactionInfo = transaction.getAllInfo()
         cell.monthLabel.text = transactionInfo[0]
         cell.dayLabel.text = transactionInfo[1]

@@ -133,4 +133,10 @@ public class Transaction: NSObject, NSCoding {
         }
         return str
     }
+    
+    static func ==(lhs: Transaction, rhs: Transaction) -> Bool {
+        guard lhs.amount == rhs.amount, lhs.categoryName == rhs.categoryName, lhs.date == rhs.date,
+            lhs.frequency == rhs.frequency, lhs.merchant == rhs.merchant else { return false }
+        return true
+    }
 }

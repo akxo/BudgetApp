@@ -1,5 +1,5 @@
 //
-//  AddTransactionViewController.swift
+//  TransactionViewController.swift
 //  BudgetApp
 //
 //  Created by Alexander Kerendian on 7/21/18.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-class AddTransactionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class TransactionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     var transaction = Transaction()
-    
-    var editingIndex: Int? = nil
+    var editingIndex: Int?
+    var hasUnsavedChanges = true
     
     var amount: Float = 0 {
         didSet {
@@ -43,7 +43,7 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
 //        amountTextField.isUserInteractionEnabled = false
         transactionInfoTableView.isScrollEnabled = false
         
-//        updateAmountLabel()
+        setAmount()
         
         if UIScreen.main.bounds.height > 800.0 {
             keyboardHeightConstraint.constant = 325.0
@@ -56,17 +56,20 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func updateSaveButton() {
-        if transaction.isSavable {
+        if transaction.isSavable, hasUnsavedChanges {
             saveButton.isEnabled = true
         } else {
             saveButton.isEnabled = false
         }
     }
 
-    private func updateAmount() {
+    private func updateAmountLabel() {
         var label = "-$"
-        if editingIndex != nil {
+        if editingIndex != nil, !hasUnsavedChanges {
             label.append(String(transaction.amount))
+            if label.split(separator: ".")[1].count < 2 {
+                label.append("0")
+            }
         } else if amountTextField.text == nil || amountTextField.text == "" {
             label.append("0.00")
         } else {
@@ -88,17 +91,26 @@ class AddTransactionViewController: UIViewController, UITableViewDelegate, UITab
         amount = Float(String(label.split(separator: "$").last ?? "0.00")) ?? 0.0
     }
     
-    @IBAction func saveTransaction(_ sender: Any) {
-        if editingIndex != nil {
-            OverviewViewController.budget.allTransactions[editingIndex!] = transaction
-        } else {
-            OverviewViewController.budget.addTransaction(transaction: transaction)
+    private func setAmount() {
+        guard editingIndex != nil else { return }
+        var amountStr = "\(self.amount)"
+        let decimalCount = amountStr.split(separator: ".")[1].count
+        amountStr = amountStr.replacingOccurrences(of: ".", with: "")
+        if decimalCount < 2 {
+            amountStr.append("0")
         }
+        self.amountTextField.text = amountStr
+        updateAmountLabel()
+    }
+    
+    @IBAction func saveTransaction(_ sender: Any) {
+        OverviewViewController.budget.addTransaction(transaction: transaction)
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func textFieldDidChange(_ sender: UITextField) {
-        updateAmount()
+        hasUnsavedChanges = true
+        updateAmountLabel()
         updateSaveButton()
     }
     

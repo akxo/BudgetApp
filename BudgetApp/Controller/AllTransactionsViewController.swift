@@ -15,6 +15,8 @@ class AllTransactionsViewController: UIViewController, UITableViewDelegate, UITa
     
     var monthlyTransactions = [[Transaction]]()
     var filteredMonthlyTransactions = [[Transaction]]()
+    var selectedTransaction: Transaction?
+    var selectedIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,16 @@ class AllTransactionsViewController: UIViewController, UITableViewDelegate, UITa
             }
         }
         filteredMonthlyTransactions = monthlyTransactions
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toTransactionView" {
+            guard let destination = segue.destination as? TransactionViewController else { return }
+            destination.transaction = selectedTransaction ?? Transaction()
+            destination.amount = selectedTransaction?.amount ?? 0
+            destination.editingIndex = selectedIndex
+            destination.hasUnsavedChanges = false
+        }
     }
     
     // MARK SearchBar Methods
@@ -86,6 +98,15 @@ class AllTransactionsViewController: UIViewController, UITableViewDelegate, UITa
         cell.integerAmountLabel.text = transactionInfo[4]
         cell.decimalAmountLabel.text = transactionInfo[5]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let transaction = filteredMonthlyTransactions[indexPath.section][indexPath.row]
+        let index = OverviewViewController.budget.allTransactions.firstIndex(where: { $0 == transaction })
+        self.selectedTransaction = transaction
+        self.selectedIndex = index
+        performSegue(withIdentifier: "toTransactionView", sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
 }

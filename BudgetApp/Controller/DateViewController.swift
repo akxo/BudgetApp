@@ -64,8 +64,9 @@ protocol DateViewControllerDelegate {
     func sendDateBack(date: Date)
 }
 
-extension AddTransactionViewController: DateViewControllerDelegate {
+extension TransactionViewController: DateViewControllerDelegate {
     func sendDateBack(date: Date) {
         self.transaction.date = date
+        self.hasUnsavedChanges = true
     }
 }

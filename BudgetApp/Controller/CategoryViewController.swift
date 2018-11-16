@@ -74,9 +74,10 @@ protocol CategoryViewControllerDelegate {
     func sendCategoryBack(category: String)
 }
 
-extension AddTransactionViewController: CategoryViewControllerDelegate {
+extension TransactionViewController: CategoryViewControllerDelegate {
     func sendCategoryBack(category: String) {
         self.transaction.categoryName = category
+        self.hasUnsavedChanges = true
     }
 }
 

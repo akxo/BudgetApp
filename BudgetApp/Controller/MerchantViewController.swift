@@ -159,12 +159,13 @@ protocol MerchantViewControllerDelegate {
     func sendMerchantBack(merchant: String, category: String?)
 }
 
-extension AddTransactionViewController: MerchantViewControllerDelegate {
+extension TransactionViewController: MerchantViewControllerDelegate {
     func sendMerchantBack(merchant: String, category: String?) {
         self.transaction.merchant = merchant
         if category != nil {
             self.transaction.categoryName = category!
         }
+        self.hasUnsavedChanges = true
     }
 }
 

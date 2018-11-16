@@ -98,8 +98,9 @@ protocol FrequencyViewControllerDelegate {
     func sendFrequencyBack(frequency: Int?)
 }
 
-extension AddTransactionViewController: FrequencyViewControllerDelegate {
+extension TransactionViewController: FrequencyViewControllerDelegate {
     func sendFrequencyBack(frequency: Int?) {
         self.transaction.frequency = frequency
+        self.hasUnsavedChanges = true
     }
 }

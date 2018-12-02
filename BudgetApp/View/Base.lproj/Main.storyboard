@@ -186,7 +186,7 @@
                                 <rect key="frame" x="0.0" y="53" width="414" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="dm4-tD-iDN" detailTextLabel="qSP-zz-uic" style="IBUITableViewCellStyleValue1" id="d0q-q3-5IE">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="dm4-tD-iDN" detailTextLabel="qSP-zz-uic" style="IBUITableViewCellStyleValue1" id="d0q-q3-5IE">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d0q-q3-5IE" id="yRW-jy-fD6">
@@ -536,6 +536,9 @@
                     <navigationItem key="navigationItem" title="All Transactions" id="BSW-bG-uX9">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="uL1-Dn-Bd7">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addTransaction:" destination="2o0-5H-blT" id="ImE-Iz-kti"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -560,7 +563,7 @@
                                 <rect key="frame" x="0.0" y="74" width="414" height="323"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionInfo" textLabel="mPB-fg-LXb" detailTextLabel="hDk-sL-LVW" style="IBUITableViewCellStyleValue1" id="Wri-gd-FHa">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionInfo" textLabel="mPB-fg-LXb" detailTextLabel="hDk-sL-LVW" style="IBUITableViewCellStyleValue1" id="Wri-gd-FHa">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wri-gd-FHa" id="cL8-dj-yeg">
@@ -675,7 +678,7 @@
                                 <rect key="frame" x="0.0" y="53" width="414" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" id="iJQ-Zl-Apg">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" id="iJQ-Zl-Apg">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iJQ-Zl-Apg" id="wQy-qs-Uqt">
@@ -865,7 +868,7 @@
                                 <rect key="frame" x="0.0" y="53" width="414" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="merchantCell" textLabel="VLC-ol-rcM" style="IBUITableViewCellStyleDefault" id="diB-6d-SIS">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="merchantCell" textLabel="VLC-ol-rcM" style="IBUITableViewCellStyleDefault" id="diB-6d-SIS">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="diB-6d-SIS" id="FNN-aW-Hf6">

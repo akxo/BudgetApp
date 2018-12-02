@@ -31,6 +31,7 @@ class AllTransactionsViewController: UIViewController, UITableViewDelegate, UITa
     
     override func viewWillAppear(_ animated: Bool) {
         let budget = OverviewViewController.budget
+        monthlyTransactions = []
         for month in budget.getMonths() {
             let month = String(month.split(separator: " ")[0])
             let transactions = budget.allTransactions.filter({ $0.date.getMonthName() == month })
@@ -39,16 +40,23 @@ class AllTransactionsViewController: UIViewController, UITableViewDelegate, UITa
             }
         }
         filteredMonthlyTransactions = monthlyTransactions
+        allTransactionsTableView.reloadData()
+        selectedTransaction = nil
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toTransactionView" {
             guard let destination = segue.destination as? TransactionViewController else { return }
-            destination.transaction = selectedTransaction ?? Transaction()
-            destination.amount = selectedTransaction?.amount ?? 0
+            guard let selectedTransaction =  selectedTransaction else { return }
+            destination.transaction = selectedTransaction
+            destination.amount = selectedTransaction.amount
             destination.editingIndex = selectedIndex
             destination.hasUnsavedChanges = false
         }
+    }
+    
+    @IBAction func addTransaction(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "toTransactionView", sender: self)
     }
     
     // MARK SearchBar Methods

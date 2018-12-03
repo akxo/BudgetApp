@@ -30,17 +30,7 @@ class AllTransactionsViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let budget = OverviewViewController.budget
-        monthlyTransactions = []
-        for month in budget.getMonths() {
-            let month = String(month.split(separator: " ")[0])
-            let transactions = budget.allTransactions.filter({ $0.date.getMonthName() == month })
-            if !transactions.isEmpty {
-                monthlyTransactions.insert(transactions, at: 0)
-            }
-        }
-        filteredMonthlyTransactions = monthlyTransactions
-        allTransactionsTableView.reloadData()
+        reloadTransactions()
         selectedTransaction = nil
     }
     
@@ -115,6 +105,32 @@ class AllTransactionsViewController: UIViewController, UITableViewDelegate, UITa
         self.selectedIndex = index
         performSegue(withIdentifier: "toTransactionView", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let transaction = filteredMonthlyTransactions[indexPath.section][indexPath.row]
+            OverviewViewController.budget.removeTransaction(transaction: transaction)
+            reloadTransactions()
+        }
+    }
+    
+    private func reloadTransactions() {
+        let budget = OverviewViewController.budget
+        monthlyTransactions = []
+        for month in budget.getMonths() {
+            let month = String(month.split(separator: " ")[0])
+            let transactions = budget.allTransactions.filter({ $0.date.getMonthName() == month })
+            if !transactions.isEmpty {
+                monthlyTransactions.insert(transactions, at: 0)
+            }
+        }
+        filteredMonthlyTransactions = monthlyTransactions
+        allTransactionsTableView.reloadData()
     }
 
 }

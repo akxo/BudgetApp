@@ -26,10 +26,15 @@ class TransactionTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
-
-        
+    }
+    
+    override func prepareForReuse() {
+        monthLabel.text = ""
+        dayLabel.text = ""
+        merchantLabel.text = ""
+        categoryLabel.text = ""
+        integerAmountLabel.text = ""
+        decimalAmountLabel.text = ""
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

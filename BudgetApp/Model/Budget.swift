@@ -101,6 +101,12 @@ public class Budget: NSObject, NSCoding {
     }
     
     // MARK: Editing Methods
+    func removeTransaction(transaction: Transaction) {
+        guard let index = allTransactions.firstIndex(where: { $0 == transaction }) else { return }
+        allTransactions.remove(at: index)
+        saveBudget()
+    }
+    
     func changeCategoryLimit(categoryName: String, newLimit: Int) {
         categories.first(where: { $0.name == categoryName })?.limit = newLimit
         saveBudget()

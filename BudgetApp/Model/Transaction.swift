@@ -102,14 +102,6 @@ public class Transaction: NSObject, NSCoding {
         return infoArray
     }
     
-    public func getDetailInfo() -> [String] {
-        var infoArray = [merchant]
-        infoArray += [date.getDescription()]
-        infoArray += [getFrequency()]
-        infoArray += [categoryName]
-        return infoArray
-    }
-    
     private func getDateInfo() -> (String, String) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM dd"

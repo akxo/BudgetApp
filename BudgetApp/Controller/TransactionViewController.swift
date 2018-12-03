@@ -161,7 +161,20 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionInfo", for: indexPath)
         cell.accessoryType = .disclosureIndicator
         cell.textLabel?.text = transactionInfoTitle[indexPath.row]
-        cell.detailTextLabel?.text = transaction.getDetailInfo()[indexPath.row]
+        var detailText = ""
+        switch indexPath.row {
+        case 0:
+            detailText = transaction.merchant
+        case 1:
+            detailText = transaction.date.getDescription()
+        case 2:
+            detailText = transaction.getFrequency()
+        case 3:
+            detailText = transaction.categoryName
+        default:
+            break
+        }
+        cell.detailTextLabel?.text = detailText
         return cell
     }
     

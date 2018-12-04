@@ -622,6 +622,9 @@
                                 <state key="normal" title="Delete Transaction">
                                     <color key="titleColor" red="0.79433838193829787" green="0.0" blue="0.023452440115855493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="deleteTransaction:" destination="Zlc-Yg-iZz" eventType="touchUpInside" id="osy-bb-Suw"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

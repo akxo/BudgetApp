@@ -48,6 +48,8 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
         if UIScreen.main.bounds.height > 800.0 {
             keyboardHeightConstraint.constant = 325.0
         }
+        
+        deleteButton.isHidden = editingIndex == nil
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -105,6 +107,13 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func saveTransaction(_ sender: Any) {
         OverviewViewController.budget.addTransaction(transaction: transaction)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func deleteTransaction(_ sender: UIButton) {
+        guard let editingIndex = editingIndex else { return }
+        let transaction = OverviewViewController.budget.allTransactions[editingIndex]
+        OverviewViewController.budget.removeTransaction(transaction: transaction)
         self.navigationController?.popViewController(animated: true)
     }
     

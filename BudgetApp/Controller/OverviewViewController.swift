@@ -18,6 +18,8 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
     
     var numberOfRecentTransactions = 5
     
+    var selectedIndex: Int?
+    
     @IBOutlet weak var budgetView: UIView!
     
     @IBOutlet weak var budgetProgress: UIProgressView!
@@ -66,6 +68,7 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
         budgetProgress.progress = OverviewViewController.budget.getProgress(categoryName: "All", month: currentMonth)
         todayValueConstraint.constant = ((UIScreen.main.bounds.width - 72) * OverviewViewController.budget.getTodayValue(categoryName: "All", month: currentMonth)) + 20.0
         
+        selectedIndex = nil
         recentTransactionsTableview.reloadData()
     }
     
@@ -108,6 +111,8 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedIndex = indexPath.row
+        self.performSegue(withIdentifier: "toTransaction", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -122,6 +127,20 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
             navigationItem.backBarButtonItem?.tintColor = UIColor.white
             let destination = segue.destination as? BudgetPageViewController
             destination?.monthNames = OverviewViewController.budget.getMonths()
+        } else if segue.identifier == "toAllTransactions" {
+            let backItem = UIBarButtonItem(title: "Overview", style: .done, target: self, action: nil)
+            navigationItem.backBarButtonItem = backItem
+            navigationItem.backBarButtonItem?.tintColor = UIColor.white
+        } else if segue.identifier == "toTransaction" {
+            let backItem = UIBarButtonItem(title: "Overview", style: .done, target: self, action: nil)
+            navigationItem.backBarButtonItem = backItem
+            navigationItem.backBarButtonItem?.tintColor = UIColor.white
+            guard let destination = segue.destination as? TransactionViewController else { return }
+            let selectedTransaction = OverviewViewController.budget.allTransactions[selectedIndex ?? 0]
+            destination.transaction = selectedTransaction
+            destination.amount = selectedTransaction.amount
+            destination.editingIndex = selectedIndex
+            destination.hasUnsavedChanges = false
         }
     }
     

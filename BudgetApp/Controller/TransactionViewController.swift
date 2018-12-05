@@ -10,6 +10,7 @@ import UIKit
 
 class TransactionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
+    var oldTransaction: Transaction?
     var transaction = Transaction()
     var editingIndex: Int?
     var hasUnsavedChanges = true
@@ -48,16 +49,25 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
         if UIScreen.main.bounds.height > 800.0 {
             keyboardHeightConstraint.constant = 325.0
         }
-        
+        if editingIndex != nil {
+            oldTransaction = transaction.copy() as? Transaction
+        }
         deleteButton.isHidden = editingIndex == nil
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if editingIndex != nil, hasUnsavedChanges {
+            let revertButton = UIButton(type: .custom)
+            revertButton.setTitle("Revert", for: .normal)
+            revertButton.addTarget(self, action: #selector(self.revertChanges), for: .touchUpInside)
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: revertButton)
+        }
         updateSaveButton()
         transactionInfoTableView.reloadData()
     }
     
     func updateSaveButton() {
+        saveButton.title = editingIndex == nil ? "Add" : "Save"
         if transaction.isSavable, hasUnsavedChanges {
             saveButton.isEnabled = true
         } else {
@@ -115,6 +125,15 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
         let transaction = OverviewViewController.budget.allTransactions[editingIndex]
         OverviewViewController.budget.removeTransaction(transaction: transaction)
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func revertChanges() {
+        guard let oldTransaction = self.oldTransaction else { return }
+        self.transaction = oldTransaction.copy() as? Transaction ?? oldTransaction
+        hasUnsavedChanges = false
+        self.navigationItem.leftBarButtonItem = nil
+        updateSaveButton()
+        transactionInfoTableView.reloadData()
     }
     
     @IBAction func textFieldDidChange(_ sender: UITextField) {

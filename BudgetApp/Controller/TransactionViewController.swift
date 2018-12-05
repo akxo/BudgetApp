@@ -116,6 +116,9 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func saveTransaction(_ sender: Any) {
+        if let oldTransaction = self.oldTransaction {
+            OverviewViewController.budget.removeTransaction(transaction: oldTransaction)
+        }
         OverviewViewController.budget.addTransaction(transaction: transaction)
         self.navigationController?.popViewController(animated: true)
     }

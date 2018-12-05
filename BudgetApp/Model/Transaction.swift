@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Transaction: NSObject, NSCoding {
+public class Transaction: NSObject, NSCoding, NSCopying {
     
     // MARK: Properties
     var date: Date
@@ -52,6 +52,10 @@ public class Transaction: NSObject, NSCoding {
         aCoder.encode(amount, forKey: "amount")
         aCoder.encode(categoryName, forKey: "categoryName")
         aCoder.encode(frequency, forKey: "frequency")
+    }
+    
+    public func copy(with zone: NSZone? = nil) -> Any {
+        return Transaction(date: self.date, merchant: self.merchant, amount: self.amount, categoryName: self.categoryName, frequency: self.frequency)
     }
     
     // MARK: Methods

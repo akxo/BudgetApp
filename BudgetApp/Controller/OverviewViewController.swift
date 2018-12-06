@@ -116,6 +116,15 @@ class OverviewViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let budget = OverviewViewController.budget
+            let transaction = budget.allTransactions[indexPath.row]
+            OverviewViewController.budget.removeTransaction(transaction: transaction)
+            recentTransactionsTableview.reloadData()
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addTransaction" {
             let backItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: nil)
